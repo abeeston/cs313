@@ -26,7 +26,7 @@
         </div>
     </nav>
     
-
+    <a href="http://php-abeeston.rhcloud.com/test.html">test.html....</a>
     <img src="portrait.jpg.jpg"> portrait <img>
     <pre>test1</pre>
     <p>test2</p>
