@@ -12,7 +12,7 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="HomePage.html">Home</a></li>
+                    <li class="active"><a href="index.php">Home</a></li>
                     <li><a href="aboutme.html">About Me</a></li>
                     <li><a href="assignments.html">Assignments</a></li>
                 </ul>
@@ -33,9 +33,24 @@
         </ol>
         <!-- Carousel items -->
         <div class="carousel-inner">
-            <div class="active item">a</div>
-            <div class="item">b</div>
-            <div class="item">c</div>
+            <div class="active item">
+                <img src="img/family.jpg" alt="Rancagua Photo" />
+                <div class="carousel-caption">
+                    <h3>My Family</h3>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/Rancagua.jpg" alt="Rancagua Photo" />
+                <div class="carousel-caption">
+                    <h3>My Family</h3>
+                </div>
+            </div>
+            <div class="item">
+                <img src="img/brothers.jpg" alt="Rancagua Photo" />
+                <div class="carousel-caption">
+                    <h3>Me with my little brothers</h3>
+                </div>
+            </div>
         </div>
         <!-- Carousel nav -->
         <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
