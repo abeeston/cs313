@@ -27,9 +27,23 @@
     </nav>
     
     <a href="http://php-abeeston.rhcloud.com/test.html">test.html....</a>
+     <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active">a</li>
+            <li data-target="#carousel" data-slide-to="1">b</li>
+            <li data-target="#carousel" data-slide-to="2">c</li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">a</div>
+            <div class="item">b</div>
+            <div class="item">c</div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+    </div>
     <img src="portrait.jpg.jpg"> portrait <img>
     <pre>test1</pre>
-    <p>test2</p>
-    <div class="container"> <p> test3 </p></div>
 </body>
 </html>
