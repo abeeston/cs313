@@ -12,18 +12,34 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About Me</a></li>
-                    <li><a href="#">Assignments</a></li>
-                    <li><a href="#">Page 3</a></li>
+                    <li class="active"><a href="HomePage.html">Home</a></li>
+                    <li><a href="aboutme.html">About Me</a></li>
+                    <li><a href="assignments.html">Assignments</a></li>
                 </ul>
             </div>
         </div>
-    <div class="container"> 
-        <h1 class="jumbotron"> Amy Beeston <br/>
-        <p>Welcome to the official home page of Amy Beeston</p> </h1>
-    </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Amy Beeston</h1> <hr />
+                <h4>Welcome to the official home page of Amy Beeston</h4>
+            </div>
+        </div>
     </nav>
-    <pre>test</pre>
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active">a</li>
+            <li data-target="#carousel" data-slide-to="1">b</li>
+            <li data-target="#carousel" data-slide-to="2">c</li>
+        </ol>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="active item">a</div>
+            <div class="item">b</div>
+            <div class="item">c</div>
+        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+    </div>
 </body>
 </html>
