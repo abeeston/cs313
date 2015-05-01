@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" style="background-color: #000022">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Amy Beeston Homepage</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="HomePage.html">Home</a></li>
+                    <li class="active"><a href="aboutme.html">About Me</a></li>
+                    <li><a href="assignments.html">Assignments</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Amy Beeston</h1> <hr/>
+                <h4>Welcome to the official home page of Amy Beeston</h4>
+            </div>
+        </div>
+    </nav>  
+    <div class="container">
+        <h1>About Me</h1> <hr />
+        <div class="panel-group" id="accordion">
+           <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        My Family </a>
+                    </h4>
+                </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    I was born in Tucson, Arizona, but raised in Syracuse, Utah. I grew up there with my parents
+                    and my three brothers. I have one older brother and two younger brothers. 
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        Education </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    I am currently studying Software Engineering at BYU-Idaho. As the daughter of two electrical engineers,
+                    I always thought it would be something I wouldn't be interested in when I heard about engineering growing up.
+                    However, after taking the introductory programming course here at BYU-Idaho I knew it was for me. I enjoy coding
+                    and love the challenge of problem solving.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        Interests </a>
+                </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    I love music and play the violin and piano. I also love art. I first came to school to study art and I still
+                    keep up on drawing and painting for fun. I enjoy hiking and backpacking as well.
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
