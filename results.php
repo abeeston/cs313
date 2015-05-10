@@ -1,12 +1,16 @@
 <?php
 
-$cookie_name = "voted";
-$cookie_value = "0";
-setcookie($cookie_name, $cookie_value);
+$cookie_name = "vote";
+$cookie_value = "1";
 
-if($cookie_value >= 1)
-{
-    header("Location: error.php");
+if(!isset($_COOKIE[$cookie_name])) {
+    setcookie($cookie_name, $cookie_value);
+}
+else {
+    if($cookie_value >= 1)
+    {
+        header("Location: error.php");
+    }
 }
 
 // get the values of votes from the page
