@@ -35,6 +35,10 @@ fclose($file);
         $(document).ready(function(){
             $('input').tooltip();   
         });
+
+        function validate() {
+            
+        }
     </script>
     <style>
         body {

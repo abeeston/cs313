@@ -11,6 +11,15 @@
         $(document).ready(function(){
             $('input').tooltip();   
         });
+        function validate() {
+            var isChecked = $('best').prop('checked');
+            if (isChecked) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     </script>
     <style>
         body {
