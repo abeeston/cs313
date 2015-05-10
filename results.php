@@ -1,7 +1,7 @@
 <?php
 
 $cookie_name = "voted";
-$cookie_value = "1";
+$cookie_value = "0";
 setcookie($cookie_name, $cookie_value);
 
 if($cookie_value >= 1)
