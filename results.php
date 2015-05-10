@@ -7,7 +7,6 @@ setcookie($cookie_name, $cookie_value);
 if($cookie_value >= 1)
 {
     header("Location: error.php");
-    exit();
 }
 
 // get the values of votes from the page
@@ -20,7 +19,7 @@ $total = 13;
 if (!isset($best) || !isset($ultron)  || !isset($again) || !isset($friend))
 {
     header("Location: error2.php");
-    exit();
+    //exit();
 }
 ini_set('precision', 2);
 
