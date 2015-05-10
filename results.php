@@ -1,6 +1,6 @@
 <?php
 
-$cookie_name = "vote";
+$cookie_name = "vote3";
 $cookie_value = "1";
 
 if(!isset($_COOKIE[$cookie_name])) {
@@ -10,6 +10,7 @@ else {
     if($cookie_value >= 1)
     {
         header("Location: error.php");
+        die();
     }
 }
 
@@ -23,7 +24,7 @@ $total = 13;
 if (!isset($best) || !isset($ultron)  || !isset($again) || !isset($friend))
 {
     header("Location: error2.php");
-    //exit();
+    exit();
 }
 ini_set('precision', 2);
 
