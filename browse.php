@@ -75,6 +75,8 @@ $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
 $dbName = "movies";
 
+echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
+
 try
 {
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
