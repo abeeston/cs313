@@ -101,7 +101,7 @@ echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n"
 
 try
 {
-    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query2 = "SELECT * FROM movie";
