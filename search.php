@@ -63,11 +63,6 @@
                             <select class="form-control" name="genre" id="genre">
 <?php
 
-$dbUser = 'abeeston';
-$dbPass = 'moviepassword';
-$dbHost = '127.0.0.1';
-$dbName = 'movies';
-
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
