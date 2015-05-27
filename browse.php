@@ -20,6 +20,7 @@
         }
         #col1 {
             background-color: #cc3333;
+            text-align: center;
         }
         #col2 {
             background-color: #009933;
@@ -67,7 +68,15 @@
                         <h2> Browse our collection </h2>
                     </div>
                     <div id="test">
+                        <form id="form" action="browseresults.php" method="post">
+                            <h4> Select a Movie </h4>
+                            <select class="form-control" name="movie" id="movie">
 <?php
+
+$dbUser = 'abeeston';
+$dbPass = 'moviepassword';
+$dbHost = '127.0.0.1';
+$dbName = 'movies';
 
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
@@ -77,36 +86,19 @@ $dbName = "movies";
 
 echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
 
+
 try
 {
-    $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPass);
+    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query2 = "SELECT * FROM movie m 
-    JOIN moviegenre mg ON m.id = mg.movieid 
-    JOIN genre g ON g.id = mg.genreid
-    JOIN review r ON r.movieid = m.id
-    WHERE m.id = mg.movieid";
+    $query2 = "SELECT * FROM movie";
 
-    $title = "starting";
-    $display = true;
     foreach ($db->query($query2) as $row2)
     {
-        if ($title != $row2['title']) 
-        {
-            $title = $row2['title'];
-            echo '<h2 id="title">' . $row2['title'] . " (" . $row2['year'] . ')<br/><hr/></h2><h4> <u>- Genres - </u><br/>';
-            $display = false;
-        }
-        echo $row2['name'] . '  <br/>  ';
-       
-        if ($display == false)
-        {
-            $display = true;
-            echo "<h4 id=\"rating\">" . $row2['rating'] . " stars<br/> " . $row2['subject'] . "<br/>" . "<h5 id=\"rating\">" . $row2['content'] . "</h5></h4>";
-        }
+        echo '<option value="' . $row2['id'] . '">' . $row2['title'] . "</option>\n";
     } 
-    echo '</h4>';
+    //echo '</h4>';
 }
 catch(PDOEXCEPTION $ex)
 {
@@ -115,13 +107,16 @@ catch(PDOEXCEPTION $ex)
 }
 
 ?>
-                </div>
+                            </select><br/>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
             </div>
         </div>
     </div>
-    <br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 </body>
 </html>
