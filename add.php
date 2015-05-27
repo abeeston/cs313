@@ -71,7 +71,7 @@
                         <h2> Please fill in the following information </h2>
                     </div>
                     <form id="form" action="browseresults.php" method="post" onsubmit="return validate()">
-                            <h4> Select a Movie </h4>
+                            <label for="movie">Select a Movie</label>
                             <select class="form-control" name="movie" id="movie">
 <?php
 
@@ -80,11 +80,11 @@ $dbPass = 'moviepassword';
 $dbHost = '127.0.0.1';
 $dbName = 'movies';
 
-// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-// $dbName = "movies";
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$dbName = "movies";
 
 echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
 
@@ -107,13 +107,13 @@ catch(PDOEXCEPTION $ex)
 }
 
 ?>
-                            </select><br/>
+                            </select><br/><br/>
                             <label for="rating">Rating <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></label>
-                            <input type="text" class="form-control" id="rating" maxlength="1">
+                            <input type="text" class="form-control" id="rating" maxlength="1"></input>
                             <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" maxlength="100">
+                            <input type="text" class="form-control" id="subject" maxlength="100"></input>
                             <label for="content">Content</label>
-                            <input type="text" class="form-control" id="content" maxlength="1000"> <br/>
+                            <textarea class="form-control" id="content" maxlength="1000" rows="10"></textarea> <br/>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                 </div>
