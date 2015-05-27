@@ -61,12 +61,46 @@
                         <h4> Select a Genre </h4>
                         <div class="form-group">
                             <select class="form-control" name="genre" id="genre">
-                                <option value="Action">Action</option>
+<?php
+
+$dbUser = 'abeeston';
+$dbPass = 'moviepassword';
+$dbHost = '127.0.0.1';
+$dbName = 'movies';
+
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$dbName = "movies";
+
+echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
+
+try
+{
+    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $query2 = "SELECT * FROM genre";
+
+    foreach ($db->query($query2) as $row2)
+    {
+        echo '<option value="' . $row2['name'] . '">' . $row2['name'] . "</option>\n";
+    } 
+}
+catch(PDOEXCEPTION $ex)
+{
+    echo "Something bad happened: " . $ex;
+    die();
+}
+
+?>
+                               <!-- <option value="Action">Action</option>
                                 <option value="Animated">Animated</option>
                                 <option value="Family">Family</option>
                                 <option value="Horror">Horror</option>
                                 <option value="Musical">Musical</option>
-                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Sci-Fi">Sci-Fi</option>-->
                             </select>
                         </div>
                         <h4> Add a Keyword (optional) </h4>
