@@ -19,6 +19,12 @@ try
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    //    $query2 = "SELECT * FROM review WHERE movieid=$reviewid";
+    //foreach ($db->query($query2) as $row2)
+    // {
+    //     echo '<h1>' . $row2['id'] . " : " . $row2['content'] . "</h1><br/>";
+    // } 
+
     $query = "DELETE FROM review WHERE id=$reviewid";
     $db->exec($query);
 }
