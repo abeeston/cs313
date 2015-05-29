@@ -81,7 +81,7 @@ try
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query2 = "SELECT * FROM review r
+    $query2 = "SELECT title, r.id, content FROM review r
     JOIN movie m ON r.movieid = m.id";
 
     foreach ($db->query($query2) as $row2)
