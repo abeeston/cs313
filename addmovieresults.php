@@ -31,8 +31,6 @@ try
     $query = "INSERT INTO movie (title, year, image) VALUES ('" . $title . "', '" . $yeara . "', NULL)";
     $db->exec($query);
     $id = $db->lastInsertId();
-    echo $query . "<br/>";
-    echo "id = " . $id;
 
     foreach($ida as $idb)
     {
