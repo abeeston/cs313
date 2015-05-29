@@ -1,6 +1,10 @@
 <?php
 
-$id = $_POST['movie'];
+$title = $_POST['title'];
+$yeara = $_POST['year'];
+$ida = $_POST['check_list'];
+
+
 $name = "";
 $year = "";
 $numratings = 0;
@@ -11,6 +15,7 @@ $avrating = 0;
 // $dbPass = 'moviepassword';
 // $dbHost = '127.0.0.1';
 // $dbName = 'movies';
+
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
@@ -21,6 +26,22 @@ try
 {
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Insert input data to movie database
+    $query = "INSERT INTO movie (title, year, image) VALUES ('" . $title . "', '" . $yeara . "', NULL)";
+    $db->exec($query);
+    $id = $db->lastInsertId();
+    echo $query . "<br/>";
+    echo "id = " . $id;
+
+    foreach($ida as $idb)
+    {
+        $query = "INSERT INTO moviegenre (movieid, genreid) VALUES ('" .  $id . "', " . $idb . ")";
+        $db->exec($query);
+    }
+    
+    //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Movie title
     $query1 = "SELECT * FROM movie WHERE id = $id";
@@ -148,8 +169,8 @@ catch(PDOEXCEPTION $ex)
 
 try
 {
-    // $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Movie title
     $query1 = "SELECT * FROM movie WHERE id = $id";

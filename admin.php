@@ -11,8 +11,8 @@
         body {
             background-color: #CCCCCC;
         }
-        .col-sm-4 {
-            text-align: center;
+        .col-sm-6 {
+            text-align: left;
         }
         .jumbotron {
             background-color: #222222; 
@@ -37,49 +37,35 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="moviehome.php">Home</a></li>
+                    <li><a href="moviehome.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
                     <li><a href="add.php">Add a Movie</a></li>
-                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user" class="active"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Movie Recommendation System <br/><small> Find movies that match your tastes </small> </h1>
+                <h1><br/>Admin <span class="glyphicon glyphicon-user" class="active"></span><br/></h1>
             </div>
         </div>
     </nav><br/>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <div class="jumbotron" id="col1">
-                        <h2> Browse Movies </h2>
-                        <a href='browse.php' class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-th-list"></span> List
-        </a>
-                    </div>
-                </div>
+            <div class="col-sm-3">
             </div>
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <div class="jumbotron" id="col2">
-                        <h2> Advanced Search </h2>
-                        <a href="search.php" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-search"></span> Search 
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
-                        <h2> Create a Review </h2>
-                        <a href="add.php" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-plus"></span> Add 
-                        </a>
+                        <h2> Please fill in the following information </h2>
                     </div>
-                </div>
+                    <form id="form" action="adminadd.php" method="post">
+                    <h2> Password: </h2>
+                    <input type="text" class="form-control" name="password"></input><br/>
+                    <button type="submit" class="btn btn-primary">Submit</button><br/>
+                    </form>
+                </div><br/>
+            </div>
+            <div class="col-sm-3">
             </div>
         </div>
     </div>

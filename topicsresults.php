@@ -1,3 +1,36 @@
+<?php
+
+$topic = $_POST['topic'];
+
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
+
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$dbName = "movies";
+
+// Insert the input data into the database
+try 
+{
+    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $query = "INSERT INTO genre (name) VALUES ('" . $topic . "');";
+    //echo $query;
+    $db->exec($query);
+}
+catch (PDOEXCEPTION $ex)
+{
+    echo "Something bad happened: " . $ex;
+    die();
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,13 +72,13 @@
                 <ul class="nav navbar-nav">
                     <li><a href="moviehome.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
-                    <li class="active"><a href="search.php">Search</a></li>
+                    <li><a href="search.php">Search</a></li>
                     <li><a href="add.php">Add a Movie</a></li>
-                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user" class="active"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Search <span class="glyphicon glyphicon-search"></span><br/><small> What are you looking for? </small> </h1>
+                <h1><br/>Admin <span class="glyphicon glyphicon-user" class="active"></span><br/></h1>
             </div>
         </div>
     </nav><br/>
@@ -55,38 +88,32 @@
             </div>
             <div class="col-sm-6">
                 <div class="container-fluid">
-                    <div class="jumbotron" id="col2">
-                        <h2> Advanced Search </h2>
+                    <div class="jumbotron" id="col3">
+                        <h2> Current Topics </h2>
                     </div>
-                    <form id="form" action="searchresults.php" method="post">
-                        <h4> Select a Genre </h4>
-                        <div class="form-group">
-                            <select class="form-control" name="genre" id="genre">
 <?php
-
 // $dbUser = 'abeeston';
 // $dbPass = 'moviepassword';
 // $dbHost = '127.0.0.1';
 // $dbName = 'movies';
 
-$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-$dbName = "movies";
+// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+// $dbName = "movies";
 
 // echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
 
 try
 {
-    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query2 = "SELECT * FROM genre";
-
     foreach ($db->query($query2) as $row2)
     {
-        echo '<option value="' . $row2['name'] . '">' . $row2['name'] . "</option>\n";
+        echo '<h3>' . $row2['name'] . "</h3>\n";
     } 
 }
 catch(PDOEXCEPTION $ex)
@@ -96,12 +123,6 @@ catch(PDOEXCEPTION $ex)
 }
 
 ?>
-                            </select>
-                        </div>
-                        <h4> Add a Keyword (optional) </h4>
-                        <input name="keyword"></input><br/><br/>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
                 </div>
             </div>
             <div class="col-sm-3">

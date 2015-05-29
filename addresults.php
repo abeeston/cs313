@@ -1,6 +1,10 @@
 <?php
 
 $id = $_POST['movie'];
+$rating = $_POST['rating'];
+$subject = $_POST['subject'];
+$content = $_POST['content'];
+
 $name = "";
 $year = "";
 $numratings = 0;
@@ -11,16 +15,33 @@ $avrating = 0;
 // $dbPass = 'moviepassword';
 // $dbHost = '127.0.0.1';
 // $dbName = 'movies';
+
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
 $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
 $dbName = "movies";
 
-try
+// Insert the input data into the database
+try 
 {
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $query = "INSERT INTO review (movieid, rating, subject, content) VALUES ('" . $id . "', '" . $rating . "', '" . $subject . "', '" . $content . "')";
+    $db->exec($query);
+}
+catch (PDOEXCEPTION $ex)
+{
+    echo "Something bad happened: " . $ex;
+    die();
+}
+
+// Get the title and rating data for display later
+try
+{
+    //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Movie title
     $query1 = "SELECT * FROM movie WHERE id = $id";
@@ -141,15 +162,15 @@ catch(PDOEXCEPTION $ex)
                     <div id="test">
 <?php
 
-// $dbUser = 'abeeston';
-// $dbPass = 'moviepassword';
-// $dbHost = '127.0.0.1';
-// $dbName = 'movies';
+//$dbUser = 'abeeston';
+//$dbPass = 'moviepassword';
+//$dbHost = '127.0.0.1';
+//$dbName = 'movies';
 
 try
 {
-    // $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Movie title
     $query1 = "SELECT * FROM movie WHERE id = $id";

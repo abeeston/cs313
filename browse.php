@@ -1,15 +1,3 @@
-<?php
-
-$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-$dbName = "movies";
-
-echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +51,7 @@ echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n"
                     <li class="active"><a href="browse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
                     <li><a href="add.php">Add a Movie</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
@@ -84,6 +73,11 @@ echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n"
                             <h4> Select a Movie </h4>
                             <select class="form-control" name="movie" id="movie">
 <?php
+
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
 
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');

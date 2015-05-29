@@ -7,25 +7,12 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script>
-        function validate()
-        {
-            var rating = document.getElementById("rating").value;
-            if (rating > 5 || rating < 0)
-            {
-               alert("Error - The rating must be between 0 and 5");
-               document.getElementById("rating").focus();
-               return false;
-            }
-            return true;
-        }
-    </script>
     <style>
         body {
             background-color: #CCCCCC;
         }
         .col-sm-6 {
-            text-align: left;
+            text-align: center;
         }
         .jumbotron {
             background-color: #222222; 
@@ -53,12 +40,12 @@
                     <li><a href="moviehome.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
-                    <li class="active"><a href="add.php">Add a Movie</a></li>
-                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li><a href="add.php">Add a Movie</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user" class="active"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Add a Review <span class="glyphicon glyphicon-plus"></span><br/><small> Tell us what you think </small> </h1>
+                <h1><br/>Admin <span class="glyphicon glyphicon-user" class="active"></span><br/></h1>
             </div>
         </div>
     </nav><br/>
@@ -69,11 +56,15 @@
             <div class="col-sm-6">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
-                        <h2> Please fill in the following information </h2>
+                        <h2> Please enter the Movie data </h2>
                     </div>
-                    <form id="form" action="addresults.php" method="post" onsubmit="return validate()">
-                            <label for="movie">Select a Movie</label>
-                            <select class="form-control" name="movie" id="movie">
+                    <form id="form" action="addmovieresults.php" method="post">
+                        <h4> Title </h4>
+                        <input type="text" class="form-control" name="title" maxlength="50"></input>
+                        <h4> Year </h4>
+                        <input type="text" class="form-control" name="year" maxlength="4"></input>
+                        <h4> Genres </h4>
+                        <div class="checkbox">
 <?php
 
 // $dbUser = 'abeeston';
@@ -87,18 +78,19 @@ $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
 $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
 $dbName = "movies";
 
-//echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
+// echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
 
 try
 {
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query2 = "SELECT * FROM movie";
+    $query2 = "SELECT * FROM genre";
 
     foreach ($db->query($query2) as $row2)
     {
-        echo '<option value="' . $row2['id'] . '">' . $row2['title'] . "</option>\n";
+        echo '<input type="checkbox" name="check_list[]" value="' . $row2['id'] . '">' . $row2['name'] . "</input><br/>\n";
+
     } 
 }
 catch(PDOEXCEPTION $ex)
@@ -108,15 +100,9 @@ catch(PDOEXCEPTION $ex)
 }
 
 ?>
-                            </select><br/><br/>
-                            <label for="rating">Rating <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></label>
-                            <input type="text" class="form-control" name="rating" maxlength="1"></input>
-                            <label for="subject">Subject</label>
-                            <input type="text" class="form-control" name="subject" maxlength="100"></input>
-                            <label for="content">Content</label>
-                            <textarea class="form-control" name="content" maxlength="1000" rows="10"></textarea> <br/>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                            </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
             <div class="col-sm-3">

@@ -33,6 +33,9 @@ $genre = $_POST['genre'];
         #col3 {
             background-color: #333399;
         }
+        #test {
+            background-color: white;            
+        }
     </style>
 </head>
 <body>
@@ -47,6 +50,7 @@ $genre = $_POST['genre'];
                     <li><a href="browse.php">Browse</a></li>
                     <li class="active"><a href="search.php">Search</a></li>
                     <li><a href="add.php">Add a Movie</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
@@ -59,6 +63,7 @@ $genre = $_POST['genre'];
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
+                <div id="test">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col2">
                         <h2> Search Results for
@@ -75,6 +80,11 @@ $genre = $_POST['genre'];
 
 $keyword = $_POST['keyword'];
 $genre = $_POST['genre'];
+
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
 
 $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
 $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
@@ -110,8 +120,8 @@ else
 {
     try
     {
-        $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //$db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+        //$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $query2 = "SELECT * FROM movie m
         JOIN moviegenre mg ON (m.id = mg.movieid)
@@ -133,6 +143,7 @@ else
     }
 }
 ?>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">

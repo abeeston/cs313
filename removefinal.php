@@ -1,3 +1,34 @@
+<?php
+
+$reviewid = $_POST['reviewid'];
+
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
+
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$dbName = "movies";
+
+// Insert the input data into the database
+try 
+{
+    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $query = "DELETE FROM review WHERE id=$reviewid";
+    $db->exec($query);
+}
+catch (PDOEXCEPTION $ex)
+{
+    echo "Something bad happened: " . $ex;
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +42,7 @@
         body {
             background-color: #CCCCCC;
         }
-        .col-sm-4 {
+        .col-sm-6 {
             text-align: center;
         }
         .jumbotron {
@@ -27,6 +58,9 @@
         #col3 {
             background-color: #333399;
         }
+        #check {
+            font-size: 450%;
+        }
     </style>
 </head>
 <body>
@@ -37,49 +71,31 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="moviehome.php">Home</a></li>
+                    <li><a href="moviehome.php">Home</a></li>
                     <li><a href="browse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
                     <li><a href="add.php">Add a Movie</a></li>
-                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user" class="active"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Movie Recommendation System <br/><small> Find movies that match your tastes </small> </h1>
+                <h1><br/>Admin <span class="glyphicon glyphicon-user" class="active"></span><br/></h1>
             </div>
         </div>
     </nav><br/>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <div class="jumbotron" id="col1">
-                        <h2> Browse Movies </h2>
-                        <a href='browse.php' class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-th-list"></span> List
-        </a>
-                    </div>
-                </div>
+            <div class="col-sm-3">
             </div>
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <div class="jumbotron" id="col2">
-                        <h2> Advanced Search </h2>
-                        <a href="search.php" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-search"></span> Search 
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
-                        <h2> Create a Review </h2>
-                        <a href="add.php" class="btn btn-info btn-lg">
-                            <span class="glyphicon glyphicon-plus"></span> Add 
-                        </a>
+                        <h2> The review has been deleted </h2>
                     </div>
+                       <span class="glyphicon glyphicon-ok" id="check"></span>
                 </div>
+            </div>
+            <div class="col-sm-3">
             </div>
         </div>
     </div>
