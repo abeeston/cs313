@@ -25,7 +25,7 @@ try
     //     echo '<h1>' . $row2['id'] . " : " . $row2['content'] . "</h1><br/>";
     // } 
 
-    $query = "DELETE FROM review WHERE id=$reviewid";
+    $query = "DELETE FROM 'movies'.'review' WHERE 'review'.'movieid'=$reviewid";
     $db->exec($query);
 }
 catch (PDOEXCEPTION $ex)
