@@ -49,7 +49,7 @@ catch(PDOEXCEPTION $ex)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Browse</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -141,16 +141,8 @@ catch(PDOEXCEPTION $ex)
                     <div id="test">
 <?php
 
-// $dbUser = 'abeeston';
-// $dbPass = 'moviepassword';
-// $dbHost = '127.0.0.1';
-// $dbName = 'movies';
-
 try
 {
-    // $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-    // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     // Movie title
     $query1 = "SELECT * FROM movie WHERE id = $id";
     foreach ($db->query($query1) as $row1)
@@ -158,6 +150,7 @@ try
         echo "<h2>" . $row1['title'] . " (" . $row1['year'] . ")</h2>";
     } 
     echo "<hr/>";
+   
     // Movie genres
     echo "<h3 id='title'>Genres</h3>";
     $query1 = "SELECT * FROM moviegenre mg 
