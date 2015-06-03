@@ -11,16 +11,16 @@ $numratings = 0;
 $totalrating = 0;
 $avrating = 0;
 
-// $dbUser = 'abeeston';
-// $dbPass = 'moviepassword';
-// $dbHost = '127.0.0.1';
-// $dbName = 'movies';
+$dbUser = 'abeeston';
+$dbPass = 'moviepassword';
+$dbHost = '127.0.0.1';
+$dbName = 'movies';
 
-$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-$dbName = "movies";
+// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+// $dbName = "movies";
 
 // Insert the input data into the database
 try 
@@ -28,8 +28,15 @@ try
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query = "INSERT INTO review (movieid, rating, subject, content) VALUES ('" . $id . "', '" . $rating . "', '" . $subject . "', '" . $content . "')";
-    $db->exec($query);
+    $query->$db->prepare("INSERT INTO review (movieid, rating, subject, content) VALUES (:id, :rating, :subject, :content)");
+
+    $query->bindValue(':id', $id, PDO::PARAM_STR);
+    $query->bindValue(':rating', $rating, PDO::PARAM_STR);
+    $query->bindValue(':subject', $subject, PDO::PARAM_STR);
+    $query->bindValue(':content', $content, PDO::PARAM_STR);
+
+    $query->execute();
+    //$db->exec($query);
 }
 catch (PDOEXCEPTION $ex)
 {
@@ -41,7 +48,8 @@ catch (PDOEXCEPTION $ex)
 try
 {
     // Movie title
-    $query1 = "SELECT * FROM movie WHERE id = $id";
+    $query1 = "SELECT * FROM movie WHERE id = :id";
+    $query1->bindValue(':id', $id, PDO::PARAM_STR);
     foreach ($db->query($query1) as $row1)
     {
         $name = $row1['title'];
@@ -49,7 +57,7 @@ try
     } 
 
     // Movie ratings
-    $query1 = "SELECT * FROM review WHERE movieid = $id";
+    $query1 = "SELECT * FROM review WHERE movieid = :id";
     foreach ($db->query($query1) as $row1)
     {
         $numratings++;
@@ -67,7 +75,7 @@ catch(PDOEXCEPTION $ex)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add a Review</title>
+    <title>Movie Recommendation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -168,7 +176,7 @@ try
         echo "<h2>" . $row1['title'] . " (" . $row1['year'] . ")</h2>";
     } 
     echo "<hr/>";
-  
+    
     // Movie genres
     echo "<h3 id='title'>Genres</h3>";
     $query1 = "SELECT * FROM moviegenre mg 
