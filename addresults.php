@@ -11,16 +11,16 @@ $numratings = 0;
 $totalrating = 0;
 $avrating = 0;
 
-$dbUser = 'abeeston';
-$dbPass = 'moviepassword';
-$dbHost = '127.0.0.1';
-$dbName = 'movies';
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
 
-// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-// $dbName = "movies";
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+$dbName = "movies";
 
 // Insert the input data into the database
 try 
