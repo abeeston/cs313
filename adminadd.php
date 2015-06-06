@@ -1,7 +1,5 @@
 <?php
 
-//require 'password.php';
-
 //test password
 $username = $_POST['username'];
 $password = $_POST['password'];
