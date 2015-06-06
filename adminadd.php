@@ -1,12 +1,50 @@
 <?php
 
-    //test password
+//require 'password.php';
+
+//test password
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// $dbUser = 'abeeston';
+// $dbPass = 'moviepassword';
+// $dbHost = '127.0.0.1';
+// $dbName = 'movies';
+
+$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+
+try {
+
+$found = false;
+
+$pdo = new PDO("mysql:host=" . $dbHost . ";dbname=" . $dbName . ";" , $dbUser , $dbPass);
+
+$query = $pdo->prepare("SELECT username, password FROM user WHERE username = :username");
+$query->bindValue(':username', $username, PDO::PARAM_STR);
+$query->execute();
+
+    while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+
+        if ($password == $row['password']) {
+            $found = true;
+        }
+    }
+    if ($found == false) {
+        header("Location: admin.php");
+    }
+} catch (PDOException $err) {
+    echo $err;
+    die();
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin</title>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">

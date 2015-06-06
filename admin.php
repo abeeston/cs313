@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin</title>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -59,8 +59,10 @@
                         <h2> Please fill in the following information </h2>
                     </div>
                     <form id="form" action="adminadd.php" method="post">
-                    <h2> Password: </h2>
-                    <input type="text" class="form-control" name="password"></input><br/>
+                    <h3> Username: </h3>
+                    <input type="text" class="form-control" name="username"></input>
+                    <h3> Password: </h3>
+                    <input type="password" class="form-control" name="password"></input><br/>
                     <button type="submit" class="btn btn-primary">Submit</button><br/>
                     </form>
                 </div><br/>

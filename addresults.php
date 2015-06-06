@@ -28,7 +28,8 @@ try
     $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query->$db->prepare("INSERT INTO review (movieid, rating, subject, content) VALUES (:id, :rating, :subject, :content)");
+    //$query = "INSERT INTO review (movieid, rating, subject, content) VALUES (:id, :rating, :subject, :content)";
+    $query = $db->prepare("INSERT INTO review (movieid, rating, subject, content) VALUES (:id, :rating, :subject, :content)");
 
     $query->bindValue(':id', $id, PDO::PARAM_STR);
     $query->bindValue(':rating', $rating, PDO::PARAM_STR);
@@ -48,8 +49,7 @@ catch (PDOEXCEPTION $ex)
 try
 {
     // Movie title
-    $query1 = "SELECT * FROM movie WHERE id = :id";
-    $query1->bindValue(':id', $id, PDO::PARAM_STR);
+    $query1 = "SELECT * FROM movie WHERE id = $id";
     foreach ($db->query($query1) as $row1)
     {
         $name = $row1['title'];
@@ -57,7 +57,7 @@ try
     } 
 
     // Movie ratings
-    $query1 = "SELECT * FROM review WHERE movieid = :id";
+    $query1 = "SELECT * FROM review WHERE movieid = $id";
     foreach ($db->query($query1) as $row1)
     {
         $numratings++;
