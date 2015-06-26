@@ -1,0 +1,19 @@
+body {
+    background-color: #CCCCCC;
+}
+.col-sm-4 {
+    text-align: center;
+}
+.jumbotron {
+    background-color: #222222; 
+    color: #DDDDDD;
+}
+#col1 {
+    background-color: #cc3333;
+}
+#col2 {
+    background-color: #009933;
+}
+#col3 {
+    background-color: #333399;
+}
