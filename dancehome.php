@@ -38,7 +38,7 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="dbrowse.php">Browse</a></li>
-                    <li><a href="search.php">Search</a></li>
+                    <li><a href="dsearch.php">Search</a></li>
                     <li><a href="dselect.php">Score a Competition</a></li>
                     <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
@@ -64,7 +64,7 @@
                 <div class="container-fluid">
                     <div class="jumbotron" id="col2">
                         <h2> Advanced Search </h2>
-                        <a href="search.php" class="btn btn-info btn-lg">
+                        <a href="dsearch.php" class="btn btn-info btn-lg">
                             <span class="glyphicon glyphicon-search"></span> Search 
                         </a>
                     </div>

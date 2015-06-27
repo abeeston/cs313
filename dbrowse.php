@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add a Review</title>
+    <title>Browse</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
             background-color: #CCCCCC;
         }
         .col-sm-6 {
-            text-align: left;
+            text-align: center;
         }
         .jumbotron {
             background-color: #222222; 
@@ -20,12 +20,22 @@
         }
         #col1 {
             background-color: #cc3333;
+            text-align: center;
         }
         #col2 {
             background-color: #009933;
         }
+        #title {
+            color: #cc3333;
+        }
+        #rating {
+            text-align: left;
+        }
         #col3 {
             background-color: #333399;
+        }
+        #test {
+            background-color: white;            
         }
     </style>
 </head>
@@ -37,14 +47,14 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a href="dbrowse.php">Browse</a></li>
+                    <li class="active"><a href="dbrowse.php">Browse</a></li>
                     <li><a href="dsearch.php">Search</a></li>
-                    <li class="active"><a href="dselect.php">Score a Competition</a></li>
+                    <li><a href="dselect.php">Score a Competition</a></li>
                     <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Score an Event</h1>
+                <h1><br/>Browse Events<span class="glyphicon glyphicon-list"></span><br/><small> What are you looking for? </small> </h1>
             </div>
         </div>
     </nav><br/>
@@ -53,56 +63,32 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
-                <div class="container-fluid">
-                    <div class="jumbotron" id="col3">
-                        <h2> Please fill in the following information </h2>
+                <div class="container-fluid" id="test">
+                    <div class="jumbotron" id="col1">
+                        <h2>Most Recent First</h2>
                     </div>
-                    <form id="form" action="dadd.php" method="post">
-                            <label for="movie">Select an Event</label>
-                            <select class="form-control" name="event" id="movie">
-<?php
+                    <div id="test">
+                        <h1> All That Jazz </h1>
+                        <h4> March 14, 2015 </h4>
+                        <pre> A high school level competition of jazz studios in the Utah North region </pre>
+                        <a href="#">More</a>
 
-$dbUser = 'user';
-$dbPass = 'pass';
-$dbHost = '127.0.0.1';
-$dbName = 'dance';
+                        <h1> Swing Finals 2015 </h1>
+                        <h4> March 3, 2015 </h4>
+                        <pre> The final competition for the Great Basin Swing teams </pre>
+                        <a href="swingfinals.php">More</a>
 
-// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-// $dbName = "dance";
-
-//echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPass<br />\n";
-
-try
-{
-    $db = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $query2 = "SELECT * FROM event";
-
-    foreach ($db->query($query2) as $row2)
-    {
-        echo '<option value="' . $row2['eid'] . '">' . $row2['title'] . "</option>\n";
-    } 
-}
-catch(PDOEXCEPTION $ex)
-{
-    echo "Something bad happened: " . $ex;
-    die();
-}
-
-?>
-                            </select><br/><br/>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        <h1> Dance Fever </h1>
+                        <h4> April 29, 2015 </h4>
+                        <pre> A competition held for girls aged 5 through 11 from studios throughout Davis County </pre>
+                        <a href="#">More</a><br/><br/>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
             </div>
         </div>
     </div>
-    <br/><br/>
+    <br/><br/><br/><br/><br/><br/>
 </body>
 </html>

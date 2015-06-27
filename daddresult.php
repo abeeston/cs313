@@ -16,16 +16,16 @@ $s6 = $_POST['s6'];
 $c6 = $_POST['c6'];
 $content = $_POST['content'];
 
-// $dbUser = 'user';
-// $dbPass = 'pass';
-// $dbHost = '127.0.0.1';
-// $dbName = 'dance';
+$dbUser = 'user';
+$dbPass = 'pass';
+$dbHost = '127.0.0.1';
+$dbName = 'dance';
 
-$dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-$dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-$dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
-$dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-$dbName = "dance";
+// $dbUser = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+// $dbPass = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+// $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
+// $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
+// $dbName = "dance";
 
 try
 {
@@ -83,7 +83,7 @@ catch(PDOEXCEPTION $ex)
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="dbrowse.php">Browse</a></li>
-                    <li><a href="search.php">Search</a></li>
+                    <li><a href="dsearch.php">Search</a></li>
                     <li class="active"><a href="dselect.php">Score a Competition</a></li>
                     <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
