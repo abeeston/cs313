@@ -1,4 +1,4 @@
-pa<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Dance Competition Home</title>
@@ -33,14 +33,14 @@ pa<!DOCTYPE html>
     <nav class="navbar navbar-inverse" id="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="moviehome.php">Competition Home</a>
+                <a class="navbar-brand" href="dancehome.php">Competition Home</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a href="browse.php">Browse</a></li>
+                    <li><a href="dbrowse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
                     <li><a href="dselect.php">Score a Competition</a></li>
-                    <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
@@ -54,7 +54,7 @@ pa<!DOCTYPE html>
                 <div class="container-fluid">
                     <div class="jumbotron" id="col1">
                         <h2> Browse Events </h2>
-                        <a href='browse.php' class="btn btn-info btn-lg">
+                        <a href='dbrowse.php' class="btn btn-info btn-lg">
                              <span class="glyphicon glyphicon-th-list"></span> List
                         </a>
                     </div>
