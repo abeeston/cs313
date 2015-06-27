@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+pa<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Dance Competition Home</title>
@@ -39,7 +39,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="browse.php">Browse</a></li>
                     <li><a href="search.php">Search</a></li>
-                    <li><a href="add.php">Score a Competition</a></li>
+                    <li><a href="dselect.php">Score a Competition</a></li>
                     <li style="padding-left: 750px"><a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
                         <h2> Score an Event </h2>
-                        <a href="add.php" class="btn btn-info btn-lg">
+                        <a href="dselect.php" class="btn btn-info btn-lg">
                             <span class="glyphicon glyphicon-plus"></span> Add 
                         </a>
                     </div>
