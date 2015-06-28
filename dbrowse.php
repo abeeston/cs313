@@ -71,7 +71,7 @@
                         <h1> All That Jazz </h1>
                         <h4> March 14, 2015 </h4>
                         <pre> A high school level competition of jazz studios in the Utah North region </pre>
-                        <a href="#">More</a>
+                        <a href="allthatjazz.php">More</a>
 
                         <h1> Swing Finals 2015 </h1>
                         <h4> March 3, 2015 </h4>
@@ -81,7 +81,7 @@
                         <h1> Dance Fever </h1>
                         <h4> April 29, 2015 </h4>
                         <pre> A competition held for girls aged 5 through 11 from studios throughout Davis County </pre>
-                        <a href="#">More</a><br/><br/>
+                        <a href="dancefever.php">More</a><br/><br/>
                     </div>
                 </div>
             </div>
