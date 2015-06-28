@@ -38,7 +38,7 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="dbrowse.php">Browse</a></li>
-                    <li><a href="dsearch.php">Search</a></li>
+                    <li><a href="search.php">Search</a></li>
                     <li><a href="dselect.php">Score a Competition</a></li>
                     <li class="active" style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
@@ -57,7 +57,7 @@
                     <div class="jumbotron" id="col3">
                         <h2> Please fill in the following information </h2>
                     </div>
-                    <form id="form" action="adminadd.php" method="post">
+                    <form id="form" action="dadminadd.php" method="post">
                     <h2> Username: </h2>
                     <input type="text" class="form-control" name="password"></input><br/>
                     <h2> Password: </h2>

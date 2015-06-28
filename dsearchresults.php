@@ -1,3 +1,9 @@
+<?php
+
+$type = $_POST['type'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +33,9 @@
         #col3 {
             background-color: #333399;
         }
+        #test {
+            background-color: white;            
+        }
     </style>
 </head>
 <body>
@@ -38,13 +47,13 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li><a href="dbrowse.php">Browse</a></li>
-                    <li class="active"><a href="search.php">Search</a></li>
-                    <li><a href="dselect.php">Score a Competition</a></li>
+                    <li><a href="dsearch.php">Search</a></li>
+                    <li class="active"><a href="dselect.php">Score a Competition</a></li>
                     <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Search <span class="glyphicon glyphicon-search"></span><br/></h1>
+                <h1><br/>Here's what we found... <br/><small> See what you're looking for? </small> </h1>
             </div>
         </div>
     </nav><br/>
@@ -53,32 +62,48 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
+                <div id="test">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col2">
-                        <h2> Advanced Search </h2>
+                        <?php
+                            echo "<h2>Search Results for \"" . $type . "\"</h2>";
+                        ?>
                     </div>
-                    <form id="form" action="dsearchresults.php" method="post">
-                        <h4> Select a Genre </h4>
-                        <div class="form-group">
-                            <select class="form-control" name="type" id="genre">
-                                <option value="Ballet">Ballet</option>
-                                <option value="Swing">Swing</option>
-                                <option value="Jazz">Jazz</option>
-                                <option value="Hip Hop">Hip Hop</option>
-                                <option value="Latin">Latin</option>
-                                <option value="Folk">Folk</option>
-                                <option value="Ballroom">Ballroom</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <!--<label for="subject">Group</label>
-                            <input type="text" class="form-control" name="subject" maxlength="100"></input><br/>
-                            <label for="subject">Date</label>
-                            <input type="text" name="subject" width="2" style="color: grey" value="Month (ex. 'May')"></input>
-                            <input type="text" name="subject" width="4" style="color: grey" value="Day (ex. '01')"></input>
-                            <input type="text" name="subject" width="5" style="color: grey" value="Year (ex. '2014')"></input><br/>-->
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+<?php
+
+if ($type == "Ballet") {
+    echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
+} else if ($type == "Swing") {
+    echo "<a href=\"swingfinals.php\">Swing Finals - March 3, 2015</a>";
+} else if ($type == "Jazz") {
+
+} else if ($type == "Hip Hop") {
+    echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
+} else if ($type == "Latin") {
+    echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
+} else if ($type == "Folk") {
+    echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
+} else if ($type == "Ballroom") {
+    echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
+} else {
+
+} 
+
+
+echo "<br/><br/>";
+
+?>
+
+                    <!--<h1> Swing Finals 2015 </h1>
+                        <h4> March 3, 2015 </h4>
+                        <pre> The final competition for the Great Basin Swing teams </pre>
+                        <a href="#">More</a>
+
+                        <h1> Swing Fever </h1>
+                        <h4> April 29, 2015 </h4>
+                        <pre> A competition held for youth aged 5 through 11 from studios throughout Davis County </pre>
+                        <a href="#">More</a>-->
+                    </div> <br/> <br/>
                 </div>
             </div>
             <div class="col-sm-3">
