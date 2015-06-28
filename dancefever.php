@@ -107,7 +107,7 @@ catch(PDOEXCEPTION $ex)
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Swing Finals 2015<br/>
+                <h1><br/>Dance Fever<br/>
 <?php
    /*
     echo $name . "   <small>" . $year . "</small>";
@@ -124,7 +124,7 @@ catch(PDOEXCEPTION $ex)
             <div class="col-sm-6">
                 <div class="container-fluid" id="test">
                     <div class="jumbotron" id="col1">
-                        <h2>March 3, 2015</h2>
+                        <h2>April 29, 2015</h2>
 <?php
 /*
     for ($i = 0; $i < 5; $i++)
@@ -143,7 +143,7 @@ catch(PDOEXCEPTION $ex)
                     </div>
                     <div id="test">
                         <h3>Participants:</h3><hr/>
-                        <h2>Jordan High School - 1st place</h2>
+                        <h2>Rhythm Works 11-year olds - 1st place</h2>
                         <table class="table table-hover">
                             <thead>
                               <tr>
@@ -155,12 +155,12 @@ catch(PDOEXCEPTION $ex)
                             <tbody>
                               <tr>
                                 <td>Execution</td>
-                                <td>9/10</td>
+                                <td>8/10</td>
                                 <td>Strong</td>
                               </tr>
                               <tr>
                                 <td>Energy</td>
-                                <td>8.5/10</td>
+                                <td>8/10</td>
                                 <td></td>
                               </tr>
                               <tr>
@@ -180,12 +180,12 @@ catch(PDOEXCEPTION $ex)
                               </tr>
                               <tr>
                                 <td>Overall Effect</td>
-                                <td>10/10</td>
+                                <td>9/10</td>
                                 <td></td>
                               </tr>
                             </tbody>
                           </table>
-                          <h2>Skyline High School - 2nd place</h2>
+                          <h2>Studio Allegro - 2nd place</h2>
                         <table class="table table-hover">
                             <thead>
                               <tr>
@@ -197,22 +197,22 @@ catch(PDOEXCEPTION $ex)
                             <tbody>
                               <tr>
                                 <td>Execution</td>
-                                <td>8.5/10</td>
+                                <td>8/10</td>
                                 <td>Great</td>
                               </tr>
                               <tr>
                                 <td>Energy</td>
-                                <td>9/10</td>
+                                <td>9.5/10</td>
                                 <td>Great energy overall</td>
                               </tr>
                               <tr>
                                 <td>Control of Movement</td>
-                                <td>7.5/10</td>
+                                <td>8/10</td>
                                 <td>A few errors errors</td>
                               </tr>
                               <tr>
                                 <td>Visual Effects</td>
-                                <td>9/10</td>
+                                <td>7/10</td>
                                 <td>Great</td>
                               </tr>
                               <tr>
@@ -222,7 +222,7 @@ catch(PDOEXCEPTION $ex)
                               </tr>
                               <tr>
                                 <td>Overall Effect</td>
-                                <td>10/10</td>
+                                <td>8/10</td>
                                 <td></td>
                               </tr>
                             </tbody>

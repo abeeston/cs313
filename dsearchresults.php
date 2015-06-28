@@ -76,7 +76,7 @@ if ($type == "Ballet") {
 } else if ($type == "Swing") {
     echo "<a href=\"swingfinals.php\">Swing Finals - March 3, 2015</a>";
 } else if ($type == "Jazz") {
-
+    echo "<a href=\"allthatjazz.php\">All That Jazz - May 15, 2015</a>";
 } else if ($type == "Hip Hop") {
     echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
 } else if ($type == "Latin") {
@@ -86,7 +86,7 @@ if ($type == "Ballet") {
 } else if ($type == "Ballroom") {
     echo "<h4> We're sorry, there are currently no events of that genre in our records </h4>";
 } else {
-
+    echo "<a href=\"dancefever.php\">Dance Fever - April 29, 2015</a>";
 } 
 
 

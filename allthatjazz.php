@@ -107,7 +107,7 @@ catch(PDOEXCEPTION $ex)
                 </ul>
             </div>
             <div class="jumbotron">
-                <h1><br/>Swing Finals 2015<br/>
+                <h1><br/>All That Jazz<br/>
 <?php
    /*
     echo $name . "   <small>" . $year . "</small>";
@@ -124,7 +124,7 @@ catch(PDOEXCEPTION $ex)
             <div class="col-sm-6">
                 <div class="container-fluid" id="test">
                     <div class="jumbotron" id="col1">
-                        <h2>March 3, 2015</h2>
+                        <h2>March 14, 2015</h2>
 <?php
 /*
     for ($i = 0; $i < 5; $i++)
@@ -143,7 +143,7 @@ catch(PDOEXCEPTION $ex)
                     </div>
                     <div id="test">
                         <h3>Participants:</h3><hr/>
-                        <h2>Jordan High School - 1st place</h2>
+                        <h2>Syracuse Jazz Team</h2>
                         <table class="table table-hover">
                             <thead>
                               <tr>
@@ -185,7 +185,7 @@ catch(PDOEXCEPTION $ex)
                               </tr>
                             </tbody>
                           </table>
-                          <h2>Skyline High School - 2nd place</h2>
+                          <h2>Clinton Cougars - 2nd place</h2>
                         <table class="table table-hover">
                             <thead>
                               <tr>
