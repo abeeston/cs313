@@ -55,7 +55,7 @@
             <div class="col-sm-6">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
-                        <h2> Please fill in the following information </h2>
+                        <h2> Please select the event you will be scoring </h2>
                     </div>
                     <form id="form" action="dadd.php" method="post">
                             <label for="movie">Select an Event</label>
@@ -95,7 +95,7 @@ catch(PDOEXCEPTION $ex)
 
 ?>
                             </select><br/><br/>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary"> Score Competition </button>
                         </form>
                 </div>
             </div>
