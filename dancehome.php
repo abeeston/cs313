@@ -40,7 +40,7 @@
                     <li><a href="dbrowse.php">Browse</a></li>
                     <li><a href="dsearch.php">Search</a></li>
                     <li><a href="dselect.php">Score a Competition</a></li>
-                    <li style="padding-left: 750px"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+                    <li style="padding-left: 750px; color: white;"><a href="dadmin.php"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
                 </ul>
             </div>
             <div class="jumbotron">
