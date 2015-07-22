@@ -123,7 +123,7 @@ echo "<input type='hidden' value='$eid' name='eid'/>";
                               </table>
                             <label for="content">Additional Comments:</label>
                             <textarea class="form-control" name="content" maxlength="1000" rows="4"></textarea> <br/>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit Score to Administrator</button>
                         </form>
                 </div>
             </div>
