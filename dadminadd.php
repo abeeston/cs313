@@ -55,7 +55,7 @@
             <div class="col-sm-6">
                 <div class="container-fluid">
                     <div class="jumbotron" id="col3">
-                        <h2> Scores submitted today </h2>
+                        <h2> Scores submitted recently </h2>
                     </div>
                     <div style="text-align: center; background-color: white">
                     <?php
