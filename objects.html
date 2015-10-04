@@ -7,7 +7,22 @@
 </head>
 <body>
 
-<p>Creating a JavaScript Object.</p>
+<h1>JavaScript Objects</h1>
+
+<h4>The following code will Create an object and display its contents</h4>
+<pre>
+    var person = {
+    firstName : "John",
+    lastName  : "Doe",
+    age       : 50,
+    eyeColor  : "blue"
+};
+
+document.getElementById("demo").innerHTML =
+person.firstName + " is " + person.age + " years old.";
+</pre>
+
+<h4>Here are the observed results:</h4>
 
 <p id="demo"></p>
 
