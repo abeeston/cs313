@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JSON Data Serialization and Deserialization</h2>
+
+<p id="demo"></p>
+
+<script>
+
+// A simple example of an array of JSON items
+var employees = [
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter","lastName": "Jones"}
+];
+
+// Serializing information about a person
+var text = '{"name":"Amy Williams","street":"Centennial street","phone":"(801)390-3818"}';
+
+// Parsing and deserializing that data
+var obj = JSON.parse(text);
+
+document.getElementById("demo").innerHTML =
+obj.name + "<br>" +
+obj.street + "<br>" +
+obj.phone;
+
+</script>
+
+</body>
+</html>
