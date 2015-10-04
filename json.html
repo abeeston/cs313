@@ -7,8 +7,29 @@
 </head>
 <body>
 
-<h2>JSON Data Serialization and Deserialization</h2>
+<h1>JSON Data Serialization and Deserialization</h1>
 
+<h4>The following is an example of JSON Data Serialization</h4>
+<pre>
+  var employees = [
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    {"firstName":"Peter","lastName": "Jones"}
+];
+</pre>
+<h4>Here is an example of JSON deserialization</h4>
+<pre>
+  var text = '{"name":"Amy Williams","street":"Centennial street","phone":"(801)390-3818"}';
+  
+  var obj = JSON.parse(text);
+
+  document.getElementById("demo").innerHTML =
+  obj.name + "<br>" +
+  obj.street + "<br>" +
+  obj.phone;
+</pre>
+
+<h4>And the observed results are below:</h4>
 <p id="demo"></p>
 
 <script>
