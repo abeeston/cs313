@@ -7,50 +7,88 @@
 </head>
 <body>
 
-<h1>JSON Data Serialization and Deserialization</h1>
+<h1>JSON Data Serialization and Deserialization</h1><br/>
 
-<h4>The following is an example of JSON Data Serialization</h4>
+<h3>The following is a simple example of JSON Data Serialization</h3>
+
 <pre>
-  var employees = [
-    {"firstName":"John", "lastName":"Doe"},
-    {"firstName":"Anna", "lastName":"Smith"},
-    {"firstName":"Peter","lastName": "Jones"}
-];
+var text = '{"name":"Amy Williams","street":"Centennial street","phone":"(801)390-3818"}';
 </pre>
-<h4>Here is an example of JSON deserialization</h4>
-<pre>
-  var text = '{"name":"Amy Williams","street":"Centennial street","phone":"(801)390-3818"}';
-  
-  var obj = JSON.parse(text);
 
-  document.getElementById("demo").innerHTML =
-  obj.name + "<br>" +
-  obj.street + "<br>" +
-  obj.phone;
+<h4>Here is an example of JSON deserialization</h4>
+
+<pre>
+var obj = JSON.parse(text);
+
+document.getElementById("demo").innerHTML =
+obj.name +
+obj.street +
+obj.phone;
 </pre>
 
 <h4>And the observed results are below:</h4>
-<p id="demo"></p>
+
+<pre id="demo"></pre><br/>
+
+<h3>The following is a more complex example of JSON Data Serialization</h3>
+
+<pre>
+{"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+
+  {"firstName":"Peter","lastName": "Jones"}
+]}
+</pre>
+
+<h4>And the corresponding deserialization code:</h4>
+
+<pre>
+var obj2 = JSON.parse(emp);
+
+var text2 = "";
+
+for (var i = 0; i < 3; i++) {
+  text2 += obj2.employees[i].firstName + " ";
+  text2 += obj2.employees[i].lastName;
+}
+
+document.getElementById("demo2").innerHTML = text2;
+</pre>
+
+<h4>And the observed results are below:</h4>
+
+<pre id="demo2"></pre>
 
 <script>
 
-// A simple example of an array of JSON items
-var employees = [
-    {"firstName":"John", "lastName":"Doe"},
-    {"firstName":"Anna", "lastName":"Smith"},
-    {"firstName":"Peter","lastName": "Jones"}
-];
-
 // Serializing information about a person
-var text = '{"name":"Amy Williams","street":"Centennial street","phone":"(801)390-3818"}';
+var text = '{"name":"Amy Williams","street":"Garland street","phone":"(801)390-3818"}';
 
-// Parsing and deserializing that data
+// Parsing data
 var obj = JSON.parse(text);
 
+// Access and Display
 document.getElementById("demo").innerHTML =
 obj.name + "<br>" +
 obj.street + "<br>" +
 obj.phone;
+
+// Serializing information about employees
+var emp = '{"employees":[{"firstName":"John", "lastName":"Doe"},{"firstName":"Anna", "lastName":"Smith"},{"firstName":"Peter", "lastName":"Jones"}]}';
+
+// Parsing data
+var obj2 = JSON.parse(emp);
+
+// Iteratively Access and Display
+var text2 = "";
+
+for (var i = 0; i < 3; i++) {
+text2 += obj2.employees[i].firstName + " ";
+text2 += obj2.employees[i].lastName + "<br/>";
+}
+
+document.getElementById("demo2").innerHTML = text2;
 
 </script>
 
