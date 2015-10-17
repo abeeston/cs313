@@ -3,39 +3,97 @@
     <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 
 <h1>JavaScript Objects</h1>
 
-<h4>The following code will Create an object and display its contents</h4>
+<p>The following code will Create an object and display its properties manually using the dot operator </p>
 <pre>
-    var person = {
-    firstName : "John",
-    lastName  : "Doe",
-    age       : 50,
-    eyeColor  : "blue"
+var person = {
+    firstName : "Amy",
+    lastName : "Williams",
+    age : 20,
+    GPA : 3.95
 };
 
 document.getElementById("demo").innerHTML =
 person.firstName + " is " + person.age + " years old.";
 </pre>
 
-<h4>Here are the observed results:</h4>
-
+<h4>Results:</h4>
 <p id="demo"></p>
+
+<p>The following example adds a function called displayData() that tells the object how to do this on its own</p>
+<pre>
+var person = {
+    firstName: "Amy",
+    lastName: "Williams",
+    age: 22,
+    GPA: 3.95,
+    display: function(){
+      return this.firstName + " " + this.lastName + "GPA: " + this.GPA;
+    }
+};
+
+var text = person.display();
+</pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p></p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p></p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p></p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p></p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p></p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results2"></p>
 
 <script>
 var person = {
-    firstName : "John",
-    lastName  : "Doe",
-    age       : 50,
-    eyeColor  : "blue"
+    firstName: "Amy",
+    lastName: "Williams",
+    age: 22,
+    GPA: 3.95,
+    display: function(){
+      return this.firstName + " " + this.lastName + "<br/>GPA: " + this.GPA;
+    }
 };
 
 document.getElementById("demo").innerHTML =
 person.firstName + " is " + person.age + " years old.";
+var text = person.display();
+
+document.getElementById("results2").innerHTML = text;
+
+function Person(firstName, lastName, age, GPA)
+{
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+  this.GPA = GPA;
+}
+
+var myPerson = new Person("James", "Brown", 21, 3.88);
+
 </script>
 
 </body>

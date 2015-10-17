@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>Local Storage</h1>
+
+<p>First, check if local storage is supported by your browser. If not, the rest will not work</p>
+<pre>
+if (typeof(Storage) !== "undefined")
+{
+  document.getElementById("results1").innerHTML = "Local Storage is supported by your browser";
+}
+else 
+{
+  document.getElementById("results1").innerHTML = "Sorry, Local Storage is not supported by your browser";
+}</pre>
+<h4>Results:</h4>
+<p id="results1"></p>
+
+<p>Setting local storage:</p>
+<pre>
+localStorage.setItem("firstname", "Amy");</pre>
+<h4>Results:</h4>
+<p>Open local storage in your JavaScript console<br/> 
+
+<p>The element can be accessed from Local Storage as follows:</p>
+<pre>
+document.getElementById("results2").innerHTML = localStorage.getItem("firstname");</pre>
+<h4>Results:</h4>
+<p id="results2"></p>
+
+<p>Changing the value will overwrite the existing value:</p>
+<pre>
+localStorage.setItem("firstname", "Trevor");</pre>
+<h4>Results:</h4>
+<p id="results3"></p>
+
+<p>Local Storage can be removed as follows (Note that now the results come back blank):</p>
+<pre>
+localStorage.removeItem("firstname");</pre>
+<h4>Results:</h4>
+<p id="results4"></p>
+
+<p>Storing and retrieving arrays</p>
+<pre>
+var student = [ "Amy", "Trevor", "Kevin" ];
+localStorage.object = JSON.stringify(student);
+var obj = JSON.parse(localStorage.object);
+for (var i = 0; i < obj.length; i++)
+{
+  text += " " + obj[i];
+}</pre>
+<h4>Results:</h4>
+<p id="results5"></p>
+
+<p>Storing and retrieving associative arrays</p>
+<pre>
+var student = {firstName:"Amy", lastName:"Williams", age:22};
+localStorage.object = JSON.stringify(student);
+var obj = JSON.parse(localStorage.object);
+text += obj.firstName + " " + obj.lastName + ", " + obj.age;</pre>
+<h4>Results:</h4>
+<p id="results6"></p>
+
+<p>Storing and retrieving objects</p>
+<pre></pre>
+<h4>Results:</h4>
+<p id="results7"></p>
+
+<script>
+
+if (typeof(Storage) !== "undefined")
+{
+  document.getElementById("results1").innerHTML = "Local Storage is supported by your browser";
+}
+else 
+{
+  document.getElementById("results1").innerHTML = "Sorry, Local Storage is not supported by your browser";
+}
+
+localStorage.setItem("firstname", "Amy");
+
+document.getElementById("results2").innerHTML = localStorage.getItem("firstname");
+
+localStorage.setItem("firstname", "Trevor");
+
+document.getElementById("results3").innerHTML = localStorage.getItem("firstname");
+
+localStorage.removeItem("firstname");
+document.getElementById("results4").innerHTML = localStorage.getItem("firstname");
+
+text = "";
+var student = [ "Amy", "Trevor", "Kevin" ];
+localStorage.object = JSON.stringify(student);
+var obj = JSON.parse(localStorage.object);
+for (var i = 0; i < obj.length; i++)
+{
+  text += " " + obj[i];
+}
+
+document.getElementById("results5").innerHTML = text;
+
+text = "";
+var student = {firstName:"Amy", lastName:"Williams", age:22};
+localStorage.object = JSON.stringify(student);
+var obj = JSON.parse(localStorage.object);
+text += obj.firstName + " " + obj.lastName + ", " + obj.age;
+document.getElementById("results6").innerHTML = text;
+/*
+var student = { "firstname" : "Amy", "lastname": "Williams"};
+localStorage.object = JSON.stringify(student);
+var obj = JSON.parse(localStorage.object);
+text = obj.firstname + " " + obj.lastname;
+
+document.getElementById("results5").innerHTML = text;
+*/
+</script>
+
+</body>
+</html>

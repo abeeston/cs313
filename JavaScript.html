@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h1> JavaScript </h1>
+	<h3> Conditional Statements </h3>
+	<pre> 
+var grade = 96;
+if (grade > 60) 
+{
+	document.getElementById("result1").innerHTML = "You Passed!";
+} 
+else 
+{
+	document.getElementById("result1").innerHTML = "You Failed!";
+}
+	</pre>
+	<h4> Results: </h4>
+	<p id="result1"></p>
+	<pre>
+var tookNotes = true;
+var studied = false;
+
+if (tookNotes && studied) 
+{
+	document.getElementById("result1b").innerHTML = "You will do well!";
+} 
+else if (tookNotes || studied) 
+{
+	document.getElementById("result1b").innerHTML = "You will do average";
+} 
+else 
+{
+	document.getElementById("result1b").innerHTML = "You will fail";
+}
+	</pre>
+	<h4> Results: </h4>
+	<p id="result1b"></p>
+	<script>
+
+	var grade = 96;
+	if (grade > 60) {
+		document.getElementById("result1").innerHTML = "You Passed!";
+	} else {
+		document.getElementById("result1").innerHTML = "You Failed!";
+	}
+
+	var tookNotes = true;
+	var studied = false;
+
+	if (tookNotes && studied) {
+		document.getElementById("result1b").innerHTML = "You will do well!";
+	} else if (tookNotes || studied) {
+		document.getElementById("result1b").innerHTML = "You will do average";
+	} else {
+		document.getElementById("result1b").innerHTML = "You will fail";
+	}
+
+	</script>
+
+	<h3> Loops </h3>
+	<h3> Do-While loop </h3>
+	<pre>
+var text = "";
+var i = 0;
+do 
+{
+   	text += "Value of 'i' in loop: " + i;
+   	i++;
+}
+while (i < 5);
+	</pre>
+
+	<h5> Results: </h5>
+	<p id="result2"></p>
+
+	<h3> While loop </h3>
+	<pre>
+text = "";
+i = 0;
+while (i < 10)
+{
+	text += "Value of 'i * 2' in loop: " + i;
+	i++;
+}
+	</pre>
+	<h5> Results: </h5>
+	<p id="result2b"></p>
+
+	<h3> For loop </h3>
+	<pre>
+text = "";
+for (i = 0; i < 10; i++) 
+{
+	text += "value of 'i * 5' in loop: " + i * 5;
+}
+	</pre>
+	<h5> Results: </h5>
+	<p id="result2c"></p>
+	<script> 
+
+	var text = "";
+	var i = 0;
+	do {
+    	text += "Value of 'i' in loop: " + i + "<br/>";
+    	i++;
+	}
+	while (i < 5);
+	document.getElementById("result2").innerHTML = text;
+
+	text = "";
+	i = 0;
+	while (i < 10)
+	{
+		text += "Value of 'i * 2' in loop: " + i * 2 + "<br/>";
+		i++;
+	}
+	document.getElementById("result2b").innerHTML = text;
+
+	text = "";
+	for (i = 0; i < 10; i++) 
+	{
+		text += "value of 'i * 5' in loop: " + i * 5 + "<br/>";
+	}
+	document.getElementById("result2c").innerHTML = text;
+
+	</script>
+
+	<h3> Functions </h3>
+	<pre>
+function multiply(a, b) 
+{
+	return a * b;
+}
+
+var a = multiply(5, 6);
+var b = multiply(1234, 1234);
+var c = multiply(-1, 60);
+var d = multiply(0, 8);
+var e = multiply(10, 60);
+</pre>
+	<h4> Results: </h4>
+	<p id = "result3"></p>
+	<script>
+
+	function multiply(a, b) 
+	{
+		return a * b;
+	}
+	var a = multiply(5, 6);
+	var b = multiply(1234, 1234);
+	var c = multiply(-1, 60);
+	var d = multiply(0, 8);
+	var e = multiply(10, 60);
+
+	document.getElementById("result3").innerHTML = "a = " + a + "<br>" + "b = " + b + "<br/>" + "c = " + c + "<br/>" + "d = " + d + "<br/>" + "e = " + e + "<br/>";
+
+	</script>
+
+	<h3> Variables </h3>
+	<title>Important Points:</title>
+	<ul>
+		<li>A variable declared outside a function has global scope</li>
+		<li>Variables not previously declared have automatic global scope</li>
+	</ul>
+	<p> Variables initially given no value have a default value of undefined </p>
+	<pre>
+var car;
+	</pre>
+	<h4> Results: </h4>
+	<p id="result4"></p>
+
+	<p> Variables' values may be set and then reset like in the following examples</p>
+	<pre>
+car = "Honda";
+car = "Toyota";
+	</pre>
+	<h4> Results: </h4>
+	<p id="result4b1"></p>
+	<p id="result4b"></p>
+
+	<p> Variables can be interpreted as numbers and arithmetic can be performed on them </p>
+	<pre>
+var a = 5;
+var b = 3;
+var c = a + b;</pre>
+	<h4> Results: </h4>
+	<p id="result4c"></p>
+
+	<p> Variables may also be interpreted as strings with the double quotes and concatenated as follows: </p>
+	<pre>
+var first = "John";
+var last = "Doe";
+var name = first + " " + last;</pre>
+	<h4> Results: </h4>
+	<p id="result4d"></p>
+
+	<p> It is important to note that if strings are combined with numbers there will be a forced coersion of the numbers to strings and they will be concatenated </p>
+	<pre>
+var x = "5" + 2 + 3;</pre>
+	<h4> Results: </h4>
+	<p id="result4e"></p>
+	
+
+	<script> 
+	var car;
+	document.getElementById("result4").innerHTML = car;
+
+	car = "Honda";
+	document.getElementById("result4b1").innerHTML = car;
+	car = "Toyota";
+	document.getElementById("result4b").innerHTML = car;
+
+	var a = 5;
+	var b = 3;
+	var c = a + b;
+	document.getElementById("result4c").innerHTML = c;
+
+	var first = "John";
+	var last = "Doe";
+	var name = first + " " + last;
+	document.getElementById("result4d").innerHTML = name;
+
+	var x = "5" + 2 + 3;
+	document.getElementById("result4e").innerHTML = x;
+
+	</script>
+
+	<h3> Parameters </h3>
+	<title>There are a few important items to note about paramenters</title> 
+	<ul>
+		<li>Parameters are the names listed in the function definition</li>
+		<li>Arguements are the real values passed to and received by the function</li>
+		<li>Arguments are passed by <b>value</b></li>
+			<ul>
+				<li>If a function changes an argument's value, it does not change the paramenter's original value</li>
+			</ul>
+		<li>Objects are passed by reference</li>
+			<ul>
+				<li>If a function changes an object's value, it will <b>change</b> the paramenter's original value</li>
+			</ul>
+		<li>Type checking is not performed on passed arguments</li>
+		<li>JavaScript functions do not check the number of arguments received</li>
+	</ul><br/>
+
+	<p> In functions where there are missing arguments (less than declared) the missing values are set to undefined </p>
+	<pre>
+function display(x, y)
+{
+	document.getElementById("results5").innerHTML = x + ", " + y;
+}
+display(2);</pre>
+	<h4> Results: </h4>
+	<p id="results5"></p>
+
+	<p> JavaScript functions have a built-in object called the argument object that can be used to find the arguments. </p>
+	<pre>
+function displayArgs() {
+   	var text = "";
+   	var i;
+   	for (i = 0; i < arguments.length; i++)
+   	{
+       	text += "  " + arguments[i];
+   	}
+   	return text;
+}
+	
+var x = displayArgs(1, 10, 500, 115, 72, 64);</pre>
+	<h4> Results: </h4>
+	<p id="results5b"></p>
+
+<script> 
+
+	function display(x, y)
+	{
+		document.getElementById("results5").innerHTML = x + ", " + y;
+	}
+	display(2);
+
+	function displayArgs() {
+    	var text = "";
+    	var i;
+    	for (i = 0; i < arguments.length; i++)
+    	{
+        	text += "  " + arguments[i];
+    	}
+    	return text;
+	}
+	
+	var x = displayArgs(1, 10, 500, 115, 72, 64);
+
+	document.getElementById("results5b").innerHTML = x;
+
+
+	</script>
+
+	<h3> Arrays </h3>
+	<title>Important points</title>
+		<ul>
+			<li> Arrays are JavaScript object</li>
+			<li> Arrays use numbers to access their elements </li>
+			<li> Arrays may contain multiple data types </li>
+			<li>Arrays are zero-relative</li>
+			<li>Arrays have a length property that can be used while looping through them</li>
+		</ul>
+	<p>The following example shows mixing student names with a student id</p>
+	<pre>
+var text = "";
+var students = [
+	"Amy Williams",
+	552359831,
+	"Kevin Beesley"
+];
+
+for (var i = 0; i < students.length; i++)
+{
+	text += " " + students[i];
+}</pre>
+	<h4> Results: </h4>
+	<p id="results6"></p>
+
+	<p>The following example shows how JavaScript can create an array using "new"</p>
+	<pre>
+var text = "";
+var students = new Array("Trevor Walker", 989843536, "Joseph Brown");
+
+for (var i = 0; i < students.length; i++)
+{
+	text += " " + students[i];
+}</pre>
+	<h4> Results: </h4>
+	<p id="results6b"></p>
+
+
+
+	<script> 
+
+	var text = "";
+	var students = [
+		"Amy Williams",
+		552359831,
+		"Kevin Beesley"
+	];
+
+	for (var i = 0; i < students.length; i++)
+	{
+		text += " " + students[i];
+	}
+
+	document.getElementById("results6").innerHTML = text;
+
+	var text = "";
+	var students = new Array("Trevor Walker", 989843536, "Joseph Brown");
+
+	for (var i = 0; i < students.length; i++)
+	{
+		text += " " + students[i];
+	}
+
+	document.getElementById("results6b").innerHTML = text;
+
+	
+
+	</script>
+
+	<h3> Associative Arrays </h3>
+
+	<p>Associative arrays may be used as follows. However, it is important to note that these arrays cannot be accessed with the normal index as follows:</p>
+	<pre>
+var student = [];
+student["firstName"] = "Amy";
+student["lastName"] = "Williams";
+student["age"] = 22;
+
+var text = "";
+text += student[0];</pre>
+	<h4> Results: </h4>
+	<p id="results7"></p>
+
+	<p>Associative arrays may be accessed through the dot operator as follows: </p>
+	<pre>
+var student = [];
+student["firstName"] = "Amy";
+student["lastName"] = "Williams";
+student["age"] = 22;
+
+var text = "";
+text += student.firstName + " " + student.lastName + " " + student.age;</pre>
+	<h4> Results: </h4>
+	<p id="results7b"></p>
+
+<p>The following demonstrates another way that JavaScript arrays can be defined to use key/value pairs as well</p>
+	<pre>
+var text = "";
+var student = {firstName:"Amy", lastName:"Williams", age:22};
+text += student.firstName + " " + student.lastName + " " + student.age;</pre>
+	<p id="results6c"></p>
+
+	<script> 
+	var student = [];
+	student["firstName"] = "Amy";
+	student["lastName"] = "Williams";
+	student["age"] = 22;
+
+	var text = "";
+	text += student[0];
+	document.getElementById("results7").innerHTML = text;
+
+	var student = [];
+	student["firstName"] = "Amy";
+	student["lastName"] = "Williams";
+	student["age"] = 22;
+
+	var text = "";
+	text += student.firstName + " " + student.lastName + " " + student.age;
+
+	document.getElementById("results7b").innerHTML = text;
+
+	var text = "";
+	var student = {firstName:"Amy", lastName:"Williams", age:22};
+	text += student.firstName + " " + student.lastName + " " + student.age;
+	document.getElementById("results6c").innerHTML = text;
+
+	</script>
+
+</body>
+</html>
