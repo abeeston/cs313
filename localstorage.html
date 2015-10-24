@@ -3,7 +3,7 @@
     <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 
@@ -68,12 +68,38 @@ text += obj.firstName + " " + obj.lastName + ", " + obj.age;</pre>
 <p id="results6"></p>
 
 <p>Storing and retrieving objects</p>
-<pre></pre>
+<pre>
+var student = { "firstname" : "Amy", "lastname": "Williams"};
+localStorage.setItem('student', JSON.stringify(student));
+var object = localStorage.getItem('student');
+var obj = JSON.parse(object);
+text = obj.firstname + " " + obj.lastname;</pre>
 <h4>Results:</h4>
 <p id="results7"></p>
 
+<p>Storing and retrieving complex JSON objects</p>
+<pre>
+var emp = {"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]};
+
+localStorage.setItem('employeeArray', JSON.stringify(emp));
+var object = localStorage.getItem('employeeArray');
+var obj = JSON.parse(object);
+
+var text = "";
+for (var i = 0; i < 3; i++) {
+  text += obj.employees[i].firstName + " ";
+  text += obj.employees[i].lastName;
+}</pre>
+<h4>Results:</h4>
+<p id="results8"></p>
+
 <script>
 
+// check if local storage available
 if (typeof(Storage) !== "undefined")
 {
   document.getElementById("results1").innerHTML = "Local Storage is supported by your browser";
@@ -83,17 +109,21 @@ else
   document.getElementById("results1").innerHTML = "Sorry, Local Storage is not supported by your browser";
 }
 
+// Setting
 localStorage.setItem("firstname", "Amy");
 
 document.getElementById("results2").innerHTML = localStorage.getItem("firstname");
 
+// Getting
 localStorage.setItem("firstname", "Trevor");
 
 document.getElementById("results3").innerHTML = localStorage.getItem("firstname");
 
+// Removing
 localStorage.removeItem("firstname");
 document.getElementById("results4").innerHTML = localStorage.getItem("firstname");
 
+// Arrays
 text = "";
 var student = [ "Amy", "Trevor", "Kevin" ];
 localStorage.object = JSON.stringify(student);
@@ -105,20 +135,37 @@ for (var i = 0; i < obj.length; i++)
 
 document.getElementById("results5").innerHTML = text;
 
+// Associative Arrays
 text = "";
 var student = {firstName:"Amy", lastName:"Williams", age:22};
 localStorage.object = JSON.stringify(student);
 var obj = JSON.parse(localStorage.object);
 text += obj.firstName + " " + obj.lastName + ", " + obj.age;
 document.getElementById("results6").innerHTML = text;
-/*
-var student = { "firstname" : "Amy", "lastname": "Williams"};
-localStorage.object = JSON.stringify(student);
-var obj = JSON.parse(localStorage.object);
+
+// Objects
+var student = { "firstname" : "Trevor", "lastname": "White"};
+localStorage.setItem('student', JSON.stringify(student));
+var object = localStorage.getItem('student');
+var obj = JSON.parse(object);
 text = obj.firstname + " " + obj.lastname;
 
-document.getElementById("results5").innerHTML = text;
-*/
+document.getElementById("results7").innerHTML = text;
+
+// Complex objects
+var emp = {"employees":[{"firstName":"John", "lastName":"Doe"},{"firstName":"Anna", "lastName":"Smith"},{"firstName":"Peter", "lastName":"Jones"}]};
+localStorage.setItem('employeeArray', JSON.stringify(emp));
+var object = localStorage.getItem('employeeArray');
+var obj = JSON.parse(object);
+
+var text = "";
+for (var i = 0; i < 3; i++) {
+  text += obj.employees[i].firstName + " ";
+  text += obj.employees[i].lastName + "<br/>";
+}
+
+document.getElementById("results8").innerHTML = text;
+
 </script>
 
 </body>

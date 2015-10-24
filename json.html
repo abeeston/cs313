@@ -36,13 +36,11 @@ obj.phone;
 {"employees":[
   {"firstName":"John", "lastName":"Doe"},
   {"firstName":"Anna", "lastName":"Smith"},
-
   {"firstName":"Peter","lastName": "Jones"}
 ]}
 </pre>
 
 <h4>And the corresponding deserialization code:</h4>
-
 <pre>
 var obj2 = JSON.parse(emp);
 
@@ -55,14 +53,16 @@ for (var i = 0; i < 3; i++) {
 
 document.getElementById("demo2").innerHTML = text2;
 </pre>
-
 <h4>And the observed results are below:</h4>
-
 <pre id="demo2"></pre>
 
-<h4>JavaScript objects may also be turned into a JSON string</h4>
+<h4>JSON objects may also be turned into a simple string</h4>
+<p>JSON.stringify stores that JSON text in a string. Note that obj2 is the same parsed version of the employees array. This turns JSON into a simple string that can later be parsed. This can be useful in using JSON objects in local storage.</p>
 
-<p>JSON.stringify turns an object in to a JSON text and stores that JSON text in a string.</p>
+<pre>
+text2 = JSON.stringify(obj2);</pre>
+<h4>Results:</h4>
+<p id="demo3"></p>
 
 <script>
 
@@ -93,6 +93,9 @@ text2 += obj2.employees[i].lastName + "<br/>";
 }
 
 document.getElementById("demo2").innerHTML = text2;
+
+text2 = JSON.stringify(obj2);
+document.getElementById("demo3").innerHTML = text2;
 
 </script>
 

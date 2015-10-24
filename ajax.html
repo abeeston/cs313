@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    var xmlhttp;
+
+    /*******************************************
+    * Get the country's data from the .txt file
+    *******************************************/
+    function getCountryInfo()
+    {
+       var country = document.getElementById("country").value;
+       var url;
+
+       if (country == "") // if no data has been entered
+       {
+          return;
+       }
+       if (country == "mexico")
+       {
+          url = "http://157.201.194.254/~ercanbracks/mexico.txt";
+       }
+       else if (country == "russia")
+       {
+          url = "http://157.201.194.254/~ercanbracks/russia.txt";
+       }
+       else if (country == "canada")
+       {
+          url = "http://157.201.194.254/~ercanbracks/canada.txt";
+       }
+       else if (country == "usa")
+       {
+          url = "http://157.201.194.254/~ercanbracks/usa.txt";
+       }
+       request(url, false);
+    }
+    /*******************************************
+    * For beginning a json request
+    *******************************************/
+    function jsonClick(url, isJson)
+    {      
+       var url;
+       url = document.getElementById("jsonurl").value;
+       request(url, true);
+    }
+    /*******************************************
+    * Make the request
+    *******************************************/
+    function request(url, isJson)
+    {
+       xmlhttp = new XMLHttpRequest();
+       if (isJson == false)
+       {   
+          xmlhttp.onreadystatechange = state_Change_Txt;
+       }
+       else
+       {   
+          xmlhttp.onreadystatechange = state_Change_json;
+       }
+       xmlhttp.open("GET", url, true);
+
+       xmlhttp.send(null);
+    }
+    /*******************************************
+    * State changes for text files
+    *******************************************/
+    function state_Change_Txt()
+    {      
+       if (xmlhttp.readyState == 4)
+       { 
+          if (xmlhttp.status == 200)
+          {
+             document.getElementById("countryText").innerHTML = xmlhttp.responseText;
+          }
+          else
+          {
+             alert("Error: could not complete request");
+          }
+       }
+    }   
+    /*******************************************
+    * Handle state changes for json
+    *******************************************/
+    function state_Change_json()
+    {        
+       if (xmlhttp.readyState == 4)
+       { 
+          if (xmlhttp.status == 200)
+          {
+            var characters = JSON.parse(xmlhttp.responseText);           
+            var out = "First Name Last Name Address Major GPA";
+            var i;
+      
+            for (i = 0; i < characters.students.length; i++)             
+            {
+                out += "<tr><td>" + characters.students[i].first 
+                + "</td><td>" + characters.students[i].last 
+                + "</td><td>" + characters.students[i].address.city + ", "
+                + characters.students[i].address.state + " " + characters.students[i].address.zip + "</td><td>" + characters.students[i].major + "</td><td>" + characters.students[i].gpa + "</td></tr>";
+               }
+               out += "</table>";
+               document.getElementById("jsontext").innerHTML = out;
+            }
+            else
+            {
+               alert("Error: could not complete request");
+            }
+        }
+    }
+    </script>
+</head>
+<h1>AJAX</h1>
+<h4>This is an example of an AJAX exercise to learn about requesting data from both a simple .txt file as well as JSON</h4>
+<p>AJAX stands for Asynchronous JavaScript and XML. It is used for allowing the client side of an application to communitcate with the server side of the application. The major benefit of AJAX is not having to reload the page to get data from the server</p>
+<p>The program is set up to determine which route to take (JSON request or .txt request) and to format the resulting data.</p>
+<h5> Here is the JavaScript for determining which route to take, requesting the data, and formatting: </h5>
+<p style="color:red">**NOTE: This only functions as anticipated via the BYUI network on campus. An alert will notify that the request could not be completed.**</p>
+<pre>
+    var xmlhttp;
+
+    /*******************************************
+    * Get the country's data from the .txt file
+    *******************************************/
+    function getCountryInfo()
+    {
+       var country = document.getElementById("country").value;
+       var url;
+
+       if (country == "") // if no data has been entered
+       {
+          return;
+       }
+       if (country == "mexico")
+       {
+          url = "http://157.201.194.254/~ercanbracks/mexico.txt";
+       }
+       else if (country == "russia")
+       {
+          url = "http://157.201.194.254/~ercanbracks/russia.txt";
+       }
+       else if (country == "canada")
+       {
+          url = "http://157.201.194.254/~ercanbracks/canada.txt";
+       }
+       else if (country == "usa")
+       {
+          url = "http://157.201.194.254/~ercanbracks/usa.txt";
+       }
+       request(url, false);
+    }
+    /*******************************************
+    * For beginning a json request
+    *******************************************/
+    function jsonClick(url, isJson)
+    {      
+       var url;
+       url = document.getElementById("jsonurl").value;
+       request(url, true);
+    }
+    /*******************************************
+    * Make the request
+    *******************************************/
+    function request(url, isJson)
+    {
+       xmlhttp = new XMLHttpRequest();
+       if (isJson == false)
+       {   
+          xmlhttp.onreadystatechange = state_Change_Txt;
+       }
+       else
+       {   
+          xmlhttp.onreadystatechange = state_Change_json;
+       }
+       xmlhttp.open("GET", url, true);
+
+       xmlhttp.send(null);
+    }
+    /*******************************************
+    * State changes for text files
+    *******************************************/
+    function state_Change_Txt()
+    {      
+       if (xmlhttp.readyState == 4)
+       { 
+          if (xmlhttp.status == 200)
+          {
+             document.getElementById("countryText").innerHTML = xmlhttp.responseText;
+          }
+          else
+          {
+             alert("Error: could not complete request");
+          }
+       }
+    }   
+    /*******************************************
+    * Handle state changes for json
+    *******************************************/
+    function state_Change_json()
+    {        
+       if (xmlhttp.readyState == 4)
+       { 
+          if (xmlhttp.status == 200)
+          {
+            var characters = JSON.parse(xmlhttp.responseText);           
+            var out = "First Name Last Name Address Major GPA";
+            var i;
+      
+            for (i = 0; i < characters.students.length; i++)             
+            {
+                out += "<tr><td>" + characters.students[i].first 
+                + "</td><td>" + characters.students[i].last 
+                + "</td><td>" + characters.students[i].address.city + ", "
+                + characters.students[i].address.state + " " + characters.students[i].address.zip + "</td><td>" + characters.students[i].major + "</td><td>" + characters.students[i].gpa + "</td></tr>";
+               }
+               out += "</table>";
+               document.getElementById("jsontext").innerHTML = out;
+            }
+            else
+            {
+               alert("Error: could not complete request");
+            }
+        }
+    }
+    </pre>
+  <body>
+    <div id="intro">
+      <hr/> 
+      
+    </div>
+    <div id="txt" class="links">
+      <h4> View the ten largest cities and their populations </h4>
+      <form action="" name="countries" id="countries">
+        <select name="country" id="country" onchange="getCountryInfo()">
+          <option value=""></option>
+          <option value="mexico">Mexico</option>
+          <option value="russia">Russia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select> <hr/>
+        <pre id="countryText"> </pre>
+      </form>
+    </div><hr/>
+    <div id="json" class="links">
+      <h4> View a JSON request </h4>
+      <form action="" name="jsonData">
+        URL: <textarea id="jsonurl" rows="1" style="width: 360px">http://157.201.194.254/~ercanbracks/cs213/json.txt</textarea>
+        <input type="button" id="read" value="Read" onclick="jsonClick()"></input>
+      </form><br/>
+      <div id="jsontext"> </div>
+    </div>
+  </body>
+</html>
