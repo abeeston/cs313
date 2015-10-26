@@ -13,7 +13,7 @@
     function getCountryInfo()
     {
        var country = document.getElementById("country").value;
-       var url;
+       var url = "http://app-adbeeston.rhcloud.com/";
 
        if (country == "") // if no data has been entered
        {
@@ -21,19 +21,19 @@
        }
        if (country == "mexico")
        {
-          url = "http://157.201.194.254/~ercanbracks/mexico.txt";
+          url += "mexico.txt";
        }
        else if (country == "russia")
        {
-          url = "http://157.201.194.254/~ercanbracks/russia.txt";
+          url += "russia.txt";
        }
        else if (country == "canada")
        {
-          url = "http://157.201.194.254/~ercanbracks/canada.txt";
+          url += "canada.txt";
        }
        else if (country == "usa")
        {
-          url = "http://157.201.194.254/~ercanbracks/usa.txt";
+          url += "usa.txt";
        }
        request(url, false);
     }
