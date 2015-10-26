@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
--->
   <script>
     var xmlhttp;
 
@@ -118,8 +117,44 @@
 <h4>This is an example of an AJAX exercise to learn about requesting data from both a simple .txt file as well as JSON</h4>
 <p>AJAX stands for Asynchronous JavaScript and XML. It is used for allowing the client side of an application to communitcate with the server side of the application. The major benefit of AJAX is not having to reload the page to get data from the server</p>
 <p>The program is set up to determine which route to take (JSON request or .txt request) and to format the resulting data.</p>
+<h5> Here is an example of what mexico.txt looks like:</h5>
+<pre>
+Mexico City         8,589,600
+Guadalajara         1,797,600
+Ecatepec            1,688,600
+Nezahualcoyotl      1,480,800
+Puebla              1,308,700
+Monterrey           1,236,900
+Tijuana             1,182,900
+Ciudad Juarez       1,126,700
+Leon                  994,700
+Naucalpan             953,800</pre>
+<h5>Here is an example of what json.txt looks like:</h5>
+<pre>
+{ "students" :
+  [
+    { "first" : "John",
+      "last"  : "Doe",
+      "address" : { "city" : "Chicago", "state" : "IL", "zip" : "80134" },
+      "major" : "Computer Science",
+      "gpa"   : "3.5"
+    },
+    { "first" : "Susan",
+      "last"  : "Smith",
+      "address" : { "city" : "Idaho Falls", "state" : "ID", "zip" : "83234" },
+      "major" : "Computer Engineering",
+      "gpa"   : "3.2"
+    },
+    { "first" : "Steve",
+      "last"  : "Anderson",
+      "address" : { "city" : "Rexburg", "state" : "ID", "zip" : "83460" },
+      "major" : "Electrical Engineering",
+      "gpa"   : "3.0"
+    }    
+  ]
+}</pre>
 <h5> Here is the JavaScript for determining which route to take, requesting the data, and formatting: </h5>
-<p style="color:red">**NOTE: This only functions as anticipated via the BYUI network on campus. An alert will notify that the request could not be completed.**</p>
+<p>**NOTE: The html code for putting the JSON returned from the server could not be displayed due to HTML interpretation**</p>
 <pre>
     var xmlhttp;
 
@@ -129,7 +164,7 @@
     function getCountryInfo()
     {
        var country = document.getElementById("country").value;
-       var url;
+       var url = "http://app-adbeeston.rhcloud.com/";
 
        if (country == "") // if no data has been entered
        {
@@ -137,19 +172,19 @@
        }
        if (country == "mexico")
        {
-          url = "http://157.201.194.254/~ercanbracks/mexico.txt";
+          url += "mexico.txt";
        }
        else if (country == "russia")
        {
-          url = "http://157.201.194.254/~ercanbracks/russia.txt";
+          url += "russia.txt";
        }
        else if (country == "canada")
        {
-          url = "http://157.201.194.254/~ercanbracks/canada.txt";
+          url += "canada.txt";
        }
        else if (country == "usa")
        {
-          url = "http://157.201.194.254/~ercanbracks/usa.txt";
+          url += "usa.txt";
        }
        request(url, false);
     }
@@ -207,7 +242,8 @@
           if (xmlhttp.status == 200)
           {
             var characters = JSON.parse(xmlhttp.responseText);           
-            var out = "First Name Last Name Address Major GPA";
+            //var out = "First Name Last Name Address Major GPA";
+             var out = "<table><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Major</th><th>GPA</th></tr/>";
             var i;
       
             for (i = 0; i < characters.students.length; i++)             
@@ -225,8 +261,7 @@
                alert("Error: could not complete request");
             }
         }
-    }
-    </pre>
+    }</pre>
   <body>
     <div id="intro">
       <hr/> 
