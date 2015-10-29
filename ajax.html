@@ -242,18 +242,16 @@ Naucalpan             953,800</pre>
           if (xmlhttp.status == 200)
           {
             var characters = JSON.parse(xmlhttp.responseText);           
-            //var out = "First Name Last Name Address Major GPA";
-             var out = "<table><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Major</th><th>GPA</th></tr/>";
+            var out = "First Name Last Name Address Major GPA";
             var i;
       
             for (i = 0; i < characters.students.length; i++)             
             {
-                out += "<tr><td>" + characters.students[i].first 
-                + "</td><td>" + characters.students[i].last 
-                + "</td><td>" + characters.students[i].address.city + ", "
-                + characters.students[i].address.state + " " + characters.students[i].address.zip + "</td><td>" + characters.students[i].major + "</td><td>" + characters.students[i].gpa + "</td></tr>";
+                out += characters.students[i].first 
+                + characters.students[i].last 
+                + characters.students[i].address.city + ", "
+                + characters.students[i].address.state + " " + characters.students[i].address.zip + characters.students[i].major + characters.students[i].gpa;
                }
-               out += "</table>";
                document.getElementById("jsontext").innerHTML = out;
             }
             else

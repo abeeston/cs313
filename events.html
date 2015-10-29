@@ -4,31 +4,161 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+#div1 {
+	width:300px;
+	height:200px;
+	padding:10px;
+	border:1px solid #aaaaaa;
+}
+</style>
 </head>
-<body>
+<body onload="documentLoaded()">
 
 <h1> Standard JavaScript Events</h1>
 <h4>Onload</h4>
-<pre></pre>
+<pre>
+body onload="documentLoaded()"
+
+...
+
+function documentLoaded() {
+	document.getElementById("r1").innerHTML = "The document has loaded!";
+}</pre>
+<h5>Results:</h5>
 <p id="r1"></p>
 
-<h4>Onload</h4>
+<h4>Onclick</h4>
+<pre>
+button onclick="subClicks()"
+button onclick="addClicks()"
+
+...
+
+var num = 0;
+function addClicks() {
+	num++;
+	document.getElementById("r2").innerHTML = num;
+}
+
+function subClicks() {
+	num--;
+	document.getElementById("r2").innerHTML = num;
+}</pre>
+<h5>Results:</h5>
+<button onclick="subClicks()">Subtract 1</button>
+<button onclick="addClicks()">Add 1</button>
+<p>Number: <span id="r2">0</span></p>
+
+<h4>Onmouseover</h4>
+<pre>
+onmouseover="addColor()" onmouseout="subColor()"
+
+...
+
+function addColor() {
+	document.getElementById("r3").style.color = "red";
+	document.getElementById("r3").innerHTML = "Congratulations!";
+}
+
+function subColor() {
+	document.getElementById("r3").style.color = "black";
+	document.getElementById("r3").innerHTML = "Hover over me";
+}</pre>
+<h5>Results:</h5>
+<p id="r3" onmouseover="addColor()" onmouseout="subColor()">Hover over me</p>
+
+<h4>Onkeydown and onkeyup</h4>
+<pre>
+input id="input" type="text" onkeydown="keyDown()" onkeyup="displayText()"
+
+...
+
+function keyDown() {
+	document.getElementById("pressed").style.color = "red";
+	document.getElementById("pressed").innerHTML = "A key is being pressed!";
+}
+
+function displayText() {
+	document.getElementById("r4").innerHTML = document.getElementById("input").value;
+	document.getElementById("pressed").style.color = "black";
+	document.getElementById("pressed").innerHTML = "A key is not pressed";
+}</pre>
+<p>Type something in the box</p>
+<input id="input" type="text" onkeydown="keyDown()" onkeyup="displayText()"></input>
+<h5>Results:</h5>
+<p id="pressed">A key is not pressed</p>
+<p>Your text: <p id="r4"></p></p>
+
+<h4>Drag and Drop</h4>
 <pre></pre>
+<h5>Results:</h5>
 <p id="r1"></p>
 
-<h4>Onload</h4>
-<pre></pre>
-<p id="r1"></p>
+<img id="drag1" src="test.jpg" draggable="true" ondragstart="drag(event)" width="280" height="190">
 
-<h4>Onload</h4>
-<pre></pre>
-<p id="r1"></p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
-<h4>Onload</h4>
-<pre></pre>
-<p id="r1"></p>
+<br>
+<br>
+
 <script>
 
+// Onload
+function documentLoaded() {
+	document.getElementById("r1").innerHTML = "The document has loaded!";
+}
+
+// Onclick
+var num = 0;
+function addClicks() {
+	num++;
+	document.getElementById("r2").innerHTML = num;
+}
+
+function subClicks() {
+	num--;
+	document.getElementById("r2").innerHTML = num;
+}
+
+// Onmouseover and onmouseout
+function addColor() {
+	document.getElementById("r3").style.color = "red";
+	document.getElementById("r3").innerHTML = "Congratulations!";
+}
+
+function subColor() {
+	document.getElementById("r3").style.color = "black";
+	document.getElementById("r3").innerHTML = "Hover over me";
+}
+
+// Onkeydown and onkeyup
+function keyDown() {
+	document.getElementById("pressed").style.color = "red";
+	document.getElementById("pressed").innerHTML = "A key is being pressed!";
+}
+
+function displayText() {
+	document.getElementById("r4").innerHTML = document.getElementById("input").value;
+	document.getElementById("pressed").style.color = "black";
+	document.getElementById("pressed").innerHTML = "A key is not pressed";
+}
+
+// Drag and Drop
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
 
 </script>
 </body>
