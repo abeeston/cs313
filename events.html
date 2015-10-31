@@ -7,9 +7,8 @@
   <style>
 #div1 {
 	width:300px;
-	height:200px;
+	height:210px;
 	padding:10px;
-	border:1px solid #aaaaaa;
 }
 </style>
 </head>
@@ -17,6 +16,7 @@
 
 <h1> Standard JavaScript Events</h1>
 <h4>Onload</h4>
+<p>For executing a script immediately (Example: Data validation)</p>
 <pre>
 body onload="documentLoaded()"
 
@@ -29,6 +29,7 @@ function documentLoaded() {
 <p id="r1"></p>
 
 <h4>Onclick</h4>
+<p> Can be used on almost any element, not just buttons </p>
 <pre>
 button onclick="subClicks()"
 button onclick="addClicks()"
@@ -51,6 +52,7 @@ function subClicks() {
 <p>Number: <span id="r2">0</span></p>
 
 <h4>Onmouseover</h4>
+<p> Can be used for transitions</p>
 <pre>
 onmouseover="addColor()" onmouseout="subColor()"
 
@@ -91,14 +93,55 @@ function displayText() {
 <p>Your text: <p id="r4"></p></p>
 
 <h4>Drag and Drop</h4>
-<pre></pre>
+<ul>
+	<li>Make the element Draggable: draggable="true"</li>
+	<li>Specify what should happen when the element is dragged: ondragstart="drag(event)"</li>
+		<ul>
+			<li>In this case, call the function drag(event)</li>
+		</ul>
+	<li>An event is passed to the drag function. dataTransfer.setData is then called on the event. This sets the type (text) and target id.</li>
+		<ul>
+			<li>This is done as follows: ev.dataTransfer.setData("text", ev.target.id);</li>
+		</ul>
+	<li>Next, specify the available areas to drop with ondragover. In this case, this calls the function allowDrop(event)</li>
+		<ul>
+			<li>This is done in allowDrop by  preventing the default handling of the element with event.preventDefault()</li>
+		</ul>
+	<li>Finally, the drop is done by getting the data and appending the Child element to the target</li>
+		<ul>
+			<li>var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));</li>
+		</ul>
+</ul>
+<pre>
+img id="drag1" src="test.jpg" draggable="true" ondragstart="drag(event)" width="280" height="190"
+
+div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color: #00cc66"
+div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color: #2A60FF"
+
+...
+
+// Drag and Drop functions
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}</pre>
 <h5>Results:</h5>
-<p id="r1"></p>
+<p>Drag and drop Steamboat Willie onto one of the colored tiles</p>
 
 <img id="drag1" src="test.jpg" draggable="true" ondragstart="drag(event)" width="280" height="190">
-
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<hr>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color: #00cc66"></div>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color: #2A60FF"></div>
 
 <br>
 <br>
@@ -145,7 +188,7 @@ function displayText() {
 	document.getElementById("pressed").innerHTML = "A key is not pressed";
 }
 
-// Drag and Drop
+// Drag and Drop functions
 function allowDrop(ev) {
     ev.preventDefault();
 }
