@@ -144,7 +144,18 @@ function drop(ev) {
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color: #2A60FF"></div>
 
 <br>
-<br>
+
+<h4> Alert user about exiting/reloading</h4>
+<p> This is an event applied to the window. The event listener is not applied until the script is executed. An application of this event would be to verify all information is saved or valid before exiting. Also, to prevent a user from reloading and losing all input data.</p>
+<pre>
+window.onbeforeunload = confirmExit;
+
+function confirmExit()
+{
+   return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+}</pre>
+<h5>Results:</h5>
+<p>Try to refresh the page or leave to view results</p>
 
 <script>
 
@@ -202,6 +213,14 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
 }
+
+// Prevent user from leaving
+window.onbeforeunload = confirmExit;
+function confirmExit()
+{
+   return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
+}
+
 
 </script>
 </body>
