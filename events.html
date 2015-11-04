@@ -10,6 +10,15 @@
 	height:210px;
 	padding:10px;
 }
+#track {
+	background-color: #dddddd;
+}
+#box2 {
+	background-color: navy;
+	width: 75px;
+	height: 40px;
+	color: white;
+}
 </style>
 </head>
 <body onload="documentLoaded()">
@@ -157,6 +166,11 @@ function confirmExit()
 <h5>Results:</h5>
 <p>Try to refresh the page or leave to view results</p>
 
+<h4> touch event </h4>
+<div id="track" class="track">
+<div id="box2" style="left:0; top:0">Drag Me</div>
+
+
 <script>
 
 // Onload
@@ -215,13 +229,39 @@ function drop(ev) {
 }
 
 // Prevent user from leaving
-window.onbeforeunload = confirmExit;
+// window.onbeforeunload = confirmExit;
 function confirmExit()
 {
    return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
 }
 
-
+///////////////////////////////////////////////// 
+window.addEventListener('load', function(){
+ 
+    var box2 = document.getElementById('box2'),
+    boxleft, // left position of moving box
+    startx, // starting x coordinate of touch point
+    dist = 0, // distance traveled by touch point
+    touchobj = null // Touch object holder
+ 
+    box2.addEventListener('touchstart', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point
+        boxleft = parseInt(box2.style.left) // get left position of box
+        startx = parseInt(touchobj.clientX) // get x coord of touch point
+        e.preventDefault() // prevent default click behavior
+    }, false)
+ 
+    box2.addEventListener('touchmove', function(e){
+        touchobj = e.changedTouches[0] // reference first touch point for this event
+        var dist = parseInt(touchobj.clientX) - startx // calculate dist traveled by touch point
+        // move box according to starting pos plus dist
+        // with lower limit 0 and upper limit 380 so it doesn't move outside track:
+        box2.style.left = ( (boxleft + dist > 380)? 380 : (boxleft + dist < 0)? 0 : boxleft + dist ) + 'px'
+        e.preventDefault()
+    }, false)
+ 
+}, false)
+ 
 </script>
 </body>
 </html>

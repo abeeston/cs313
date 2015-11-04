@@ -7,39 +7,116 @@
 </head>
 <body>
 
-<h1> Standard JavaScript Events</h1>
-<h4>Onload</h4>
+<h1>DOM Manipulation</h1>
+<p> One of the benefits of DOM Manipulation is the ability to dynamically manipulate the structure of your HTML document. You can dynamically add elements, buttons, etc.
+<hr/>
+<h4>createElement, appendChild, insertBefore</h4>
+<p> Click the button to create another button </p>
 <pre>
-</pre>
-<h5>Results:</h5>
-<p id="r1"></p>
+function addToList() {
 
-<h4>Onclick</h4>
-<pre>
-</pre>
-<h5>Results:</h5>
-<p id="r2"></p>
+	// Get the value of the input and get the list so we don't have to keep writing these
+	var input = document.getElementById("input").value;
+	var list = document.getElementById("mythings");
 
-<h4>Onmouseover</h4>
-<pre>
-</pre>
-<h5>Results:</h5>
-<p id="r3"></p>
+	// Create a new element (a list item)
+	var item = document.createElement("li");
 
-<h4>Onkeydown and onkeyup</h4>
-<pre>
-</pre>
-<h5>Results:</h5>
-<p id="r4"></p>
+	// Create a new text node
+	var textnode = document.createTextNode(input);
 
-<h4>Onload</h4>
-<pre></pre>
-<h5>Results:</h5>
-<p id="r1"></p>
+	// Append the text node as a child of the list item (as per DOM structure)
+	item.appendChild(textnode);
 
+	// Insert the list item into the list before the 0th child node (in this case it starts out empty)
+	list.insertBefore(item, list.childNodes[0]);
+
+	// Clear the input and refocus to the input field
+	document.getElementById("input").value = '';
+	document.getElementById("input").focus();
+}</pre>
+<h5>Results:</h5>
+<input type="text" id="input"></input>
+<button onclick="addToList()">Click to add to the list</button>
 <script>
 
+function addToList() {
+	// Get the value of the input and get the list so we don't have to keep writing these
+	var input = document.getElementById("input").value;
+	var list = document.getElementById("mythings");
+
+	// Create a new element (a list item)
+	var item = document.createElement("li");
+
+	// Create a new text node
+	var textnode = document.createTextNode(input);
+
+	// Append the text node as a child of the list item (as per DOM structure)
+	item.appendChild(textnode);
+
+	// Insert the list item into the list before the 0th child node (in this case it starts out empty)
+	list.insertBefore(item, list.childNodes[0]);
+
+	// Clear the input and refocus to the input field
+	document.getElementById("input").value = '';
+	document.getElementById("input").focus();
+}
+
+function remChild() {
+	var list = document.getElementById("mythings");
+
+	// It is good practice to test if children nodes exist before trying to delete any
+	if (list.hasChildNodes()) {
+		// remove the child node at the top of the list
+		list.removeChild(list.childNodes[0]);
+	} else {
+		alert("There are no items to delete");
+	}
+}
+
+function remAllChildren() {
+	var list = document.getElementById("mythings");
+
+	// While children nodes are still present
+	while (list.hasChildNodes()) {
+		// remove the child node at the top of the list
+		list.removeChild(list.childNodes[0]);
+	}
+}
 
 </script>
+<p id="r1"></p>
+<ul id="mythings">
+</ul>
+
+
+<h4>removeChild</h4>
+<pre>
+function remChild() {
+	var list = document.getElementById("mythings");
+
+	// It is good practice to test if children nodes exist before trying to delete any
+	if (list.hasChildNodes()) {
+		// remove the child node at the top of the list
+		list.removeChild(list.childNodes[0]);
+	} else {
+		alert("There are no items to delete");
+	}
+}
+
+function remAllChildren() {
+	var list = document.getElementById("mythings");
+
+	// While children nodes are still present
+	while (list.hasChildNodes()) {
+		// remove the child node at the top of the list
+		list.removeChild(list.childNodes[0]);
+	}
+}</pre>
+<h5>Results:</h5>
+<button onclick="remChild()">Remove the last list item</button> or <button onclick="remAllChildren()">Clear the list</button>
+<br/>
+<br/>
+<br/>
 </body>
 </html>
