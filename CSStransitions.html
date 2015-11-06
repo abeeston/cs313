@@ -9,12 +9,19 @@ div {
     width: 100px;
     height: 100px;
     background: red;
-    -webkit-transition: background 2s; /* For Safari 3.1 to 6.0 */
-    transition: background 2s;
+    text-align: center;
+    color: red;
+    -webkit-transition: background 2s, width 2s, height 2s; /* For Safari 3.1 to 6.0 */
+    transition: background 2s, width 2s, height 2s;
+    
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
 }
 
 div:hover {
     background: yellow;
+    width: 200px;
+    height: 200px;
 }
 </style>
 </head>
@@ -37,7 +44,7 @@ div:hover {
     background: yellow;
   }
 </pre>
-<div></div>
+<div><h3>Hello</h3></div>
 
 <p>Hover over the div element above, to see the transition effect.</p>
 

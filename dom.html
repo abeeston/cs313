@@ -4,15 +4,35 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+#div1 {
+	width:300px;
+	height:210px;
+	padding:10px;
+	background-color: red;
+}
+</style>
 </head>
 <body>
 
-<h1> Standard JavaScript Events</h1>
-<h4>Onload</h4>
+<h1> JavaScript Manipulation of CSS Properties </h1>
+<hr/>
+<h4>Changing the background color</h4>
 <pre>
-</pre>
+function changeColor() {
+	// Get the color input by the user and format it as a hexadecimal number
+	var color = document.getElementById("input").value;
+	var hexcolor = "#" + color;
+
+	// Apply the color to the CSS attribute of the div
+	var div = document.getElementById("div1");
+	div.style.backgroundColor = hexcolor;
+}</pre>
 <h5>Results:</h5>
+Please enter a valid html color (Use any number and/or the letters a-f. ex: aaff88)<br/>
+#<input id="input" type="text"/><button onclick="changeColor()">See color</button>
 <p id="r1"></p>
+<div id="div1"></div>
 
 <h4>Onclick</h4>
 <pre>
@@ -39,6 +59,15 @@
 
 <script>
 
+function changeColor() {
+	// Get the color input by the user and format it as a hexadecimal number
+	var color = document.getElementById("input").value;
+	var hexcolor = "#" + color;
+
+	// Apply the color to the CSS attribute of the div
+	var div = document.getElementById("div1");
+	div.style.backgroundColor = hexcolor;
+}
 
 </script>
 </body>

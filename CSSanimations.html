@@ -6,7 +6,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style> 
 
-div {
+#div1 {
     width: 100px;
     height: 100px;
     background-color: red;
@@ -53,9 +53,10 @@ div {
 
 <h3>The following code changes the color of the box below</h3>
 
-<p id="result">0</div>
+<button id="button" onclick="toggleAnimation()">Toggle Animation</button>
 
-<div></div><br/>
+
+<div id="div1"></div><br/>
 
 <pre>
 div {
@@ -90,6 +91,43 @@ div {
 }
 </pre>
 <p><b>Note:</b> When an animation is finished, it changes back to its original style.</p>
+
+<h4> Changing CSS animations through JavaScript </h4>
+<pre>
+var element = document.getElementById("div1");
+var clicks = 1;
+
+function isOdd(num) { return num % 2;}
+
+function toggleAnimation() {
+    if (isOdd(clicks)) {
+        // Change the play state to "paused"
+        element.style.webkitAnimationPlayState = "paused";
+    } else {
+        // Change the play state to "running"
+        element.style.webkitAnimationPlayState = "running";
+    }
+    clicks++;
+}</pre>
+<script>
+
+var element = document.getElementById("div1");
+var clicks = 1;
+
+function isOdd(num) { return num % 2;}
+
+function toggleAnimation() {
+    // Change the play state to "paused"
+    if (isOdd(clicks)) {
+        element.style.webkitAnimationPlayState = "paused";
+    } else {
+        // Change the play state to "running"
+        element.style.webkitAnimationPlayState = "running";
+    }
+    clicks++;
+}
+
+</script>
 
 </body>
 </html>
